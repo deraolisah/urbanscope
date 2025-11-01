@@ -11,14 +11,46 @@ const About = () => {
         exceptional service.
       </p>
 
-      {/* About Apartment Section */}
-      {/* <div className="bg-gray-50 p-8 rounded-lg border border-gray-200">
-        <h2 className="font-bold text-2xl mb-4">About apartment</h2>
-        <p className="text-gray-700 text-lg leading-relaxed">
-          Experience modern living with
-          luxurious amenities and convenient access to city life.
-        </p>
-      </div> */}
+      <hr className='w-full border-dark/10 my-12 mx-auto' />
+
+      <section className="bg-dark/5 p-4 py-8 rounded-xl flex flex-col md:flex-row items-start gap-y-8 gap-x-10">
+        <div className='w-full'>
+          <h6 className='text-sm'> By the Numbers </h6>
+          {/* <h2 className="text-3xl md:text-4xl font-bold mt-4"> Fueling Urban <br className='hidden md:flex' /> Growth </h2> */}
+          <p className="text-gray-700 max-w-lg my-4">
+            <span className='text-4xl text-dark font-bold'> Fueling Urban Growth </span>
+            and smart living, using deals run through the platform. UrbanScope Realty connects thousands of home seekers with properties that match their lifestyle and goals. Our deep market insight allows us to identify housing gaps and deliver innovative solutions that bridge them.
+          </p>
+          <div className='w-1/2 h-24 bg-dark rounded flex '></div>
+        </div>
+
+        <div className="w-3/4">
+          <div>
+            <h3 className="text-8xl font-extrabold text-dark leading-[0.8]"> ₦1.2B+ </h3>
+            <p className="text-sm text-gray-600 mt-2"> Property Value Listed </p>
+          </div>
+
+          <div className="w-full grid grid-cols-2 gap-6 mt-12 border-t border-dark/10 pt-8">
+            <div className='flex flex-col'>
+              <h3 className="text-5xl font-extrabold text-dark"> 35+ </h3>
+              <p className="text-sm text-gray-600 mt-2"> Verified Listings </p>
+            </div>
+            <div className='flex flex-col'>
+              <h3 className="text-5xl font-extrabold text-dark"> 100+ </h3>
+              <p className="text-sm text-gray-600 mt-2"> Happy Clients </p>
+            </div>
+            <div className='flex flex-col'>
+              <h3 className="text-5xl font-extrabold text-dark"> 15+ </h3>
+              <p className="text-sm text-gray-600 mt-2"> Active Agents </p>
+            </div>
+            <div className='flex flex-col'>
+              <h3 className="text-5xl font-extrabold text-dark"> 98% </h3>
+              <p className="text-sm text-gray-600 mt-2"> Client Satisfaction Rate </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
     </section>
   );
 };

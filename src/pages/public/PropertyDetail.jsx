@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { FiCheck, FiMail, FiPlay } from 'react-icons/fi';
 import { AiOutlinePicture } from "react-icons/ai";
@@ -7,6 +7,7 @@ import { GrLocation } from "react-icons/gr";
 import { PropertyContext } from "../../contexts/PropertyContext";
 import { FavoritesContext } from "../../contexts/FavoritesContext";
 import "./PropertyDetail.css";
+import gsap from "gsap";
 
 const PropertyDetail = () => {
   const [pricing, setPricing] = useState(false);
@@ -15,6 +16,12 @@ const PropertyDetail = () => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [videoThumbnail, setVideoThumbnail] = useState('');
+
+  useEffect(() => {
+    if (isLightboxOpen) {
+      gsap.fromTo(".lightbox", { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'power2.out' });
+    }
+  }, [isLightboxOpen]);
   
   const { id } = useParams();
   const { properties, loading, getFormattedPrice } = useContext(PropertyContext);
@@ -329,7 +336,7 @@ const PropertyDetail = () => {
 
       {/* Combined Lightbox for Video and Images */}
       {isLightboxOpen && (
-        <div className="fixed w-full h-full top-0 left-0 bg-dark/90 backdrop-blur-sm flex flex-col items-center justify-center z-50 p-4">
+        <div className="lightbox fixed w-full h-full top-0 left-0 bg-dark/90 backdrop-blur-sm flex flex-col items-center justify-center z-50 p-4">
           <button
             className="absolute top-4 right-4 text-dark text-4xl cursor-pointer z-10 bg-light/70 rounded-full w-10 h-10 flex items-center justify-center hover:bg-light/80 transition-colors"
             onClick={closeLightbox}

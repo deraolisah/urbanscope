@@ -97,7 +97,7 @@ const FeaturedProperties = () => {
   const displayProperties = featuredProperties.slice(0, 4);
 
   return (
-    <section ref={featuredSectionRef} className="container py-16  transition-colors duration-50 relative">
+    <section ref={featuredSectionRef} className="container py-16 transition-colors duration-50 relative">
       {/* Featured Properties Section */}
       <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-center leading-tight uppercase mb-4 md:mb-8">
         Featured Properties
