@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { HiMiniArrowRight } from "react-icons/hi2";
-import { PropertyContext } from '../contexts/PropertyContext';
+import { PropertyContext } from '../../contexts/PropertyContext';
 
 const PropertyPreview = ({ property }) => {
   const { getFormattedPrice } = useContext(PropertyContext);

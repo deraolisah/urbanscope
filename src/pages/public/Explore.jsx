@@ -398,15 +398,15 @@ const Explore = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={handleSearch}
-              className='py-1.5 px-3 border border-r-0 border-dark/10 focus:border-dark w-full !rounded-l placeholder:text-sm' 
+              className='py-1.5 px-3 border border-dark/10 focus:border-dark w-full !rounded placeholder:text-sm' 
             />
-            <button 
+            {/* <button 
               type='button' 
               onClick={handleSearch}
               className='btn py-1.5 px-4 rounded-none rounded-r w-fit'
             >
               Search 
-            </button>
+            </button> */}
           </div>
 
           <div className='w-full flex items-center justify-between sm:justify-end gap-2'>
@@ -457,13 +457,15 @@ const Explore = () => {
         {/* Search Results Info */}
         {searchQuery && (
           <div className="flex items-center justify-between bg-light p-3 rounded-lg">
-            <div className="text-sm text-dark/70">
-              Search results for: <span className="font-semibold">"{searchQuery}"</span> 
-              <span className="ml-2">({filteredProperties.length} properties found)</span>
+            <div className="text-sm text-start space-x-2 text-dark/60">
+              Search results for: 
+              <span className="font-semibold"> "{searchQuery}"</span> 
+              <br className='flex md:hidden' />
+              <span className="text-dark/80">({filteredProperties.length} properties found)</span>
             </div>
             <button 
               onClick={clearSearch}
-              className="text-xs text-dark/50 hover:text-dark cursor-pointer"
+              className="text-xs text-dark/50 hover:text-dark cursor-pointer text-nowrap"
             >
               Clear search
             </button>

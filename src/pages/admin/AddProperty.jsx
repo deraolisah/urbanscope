@@ -515,6 +515,7 @@ const AddProperty = () => {
                           src={URL.createObjectURL(image)}
                           alt={`Preview ${index + 1}`}
                           className="w-full h-24 object-cover rounded-md"
+                          loading='lazy'
                         />
                         <button
                           type="button"

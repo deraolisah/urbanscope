@@ -11,6 +11,10 @@ import Services from '../pages/public/Services';
 import PropertyDetail from '../pages/public/PropertyDetail';
 import Privacy from '../pages/public/Privacy';
 import Terms from '../pages/public/Terms';
+import Agents from '../pages/public/Agents';
+import Blog from '../pages/public/Blog';
+import Careers from '../pages/public/Careers';
+import Accessibility from '../pages/public/Accessibility';
 
 // AUTH
 import Login from '../pages/auth/Login';
@@ -49,6 +53,10 @@ const AppRoutes = () => {
           <Route path="/property/:id" element={<PropertyDetail />} />
           <Route path='/privacy' element={<Privacy />} />
           <Route path='/terms' element={<Terms />} />
+          <Route path="/agents" element={<Agents />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="accessibility" element={<Accessibility />} />
           {/* AUTH */}
           <Route path='/login' element={<Login />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />

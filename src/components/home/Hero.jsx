@@ -1,17 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import hero from '../assets/hero.png';
-import heroImg from '../assets/hero-img.png';
-import heroImg1 from '../assets/hero-img-1.png';
-import heroImg2 from '../assets/hero-img-2.png';
-import heroImg3 from '../assets/hero-img-3.png';
+import React, { useState, useEffect, useRef } from 'react';
+import hero from '../../assets/hero.png';
+import heroImg from '../../assets/hero-img.png';
+import heroImg1 from '../../assets/hero-img-1.png';
+import heroImg2 from '../../assets/hero-img-2.png';
+import heroImg3 from '../../assets/hero-img-3.png';
 import { HiMiniArrowRight } from "react-icons/hi2";
 import { Link } from 'react-router-dom';
+import gsap from 'gsap';
+
 
 const images = [ heroImg1, heroImg, heroImg2, heroImg3 ]; // Replace with actual image imports
 
 const Hero = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  
+
+  const headingRef = useRef(null);
+  const paragraphRef = useRef(null);
+  const formRef = useRef(null);
+  const imageRef = useRef(null);
+  
+
+  useEffect(() => {
+    const tl = gsap.timeline({ delay: 0.3 });
+
+    
+    tl.fromTo(headingRef.current, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.4, ease: 'power3.out' })
+    .fromTo(paragraphRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, "-=0.4")
+    .fromTo(formRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, "-=0.4");
+
+    tl.fromTo(imageRef.current, { scale: 0.95, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'power3.out' }, "-=0.6");
+  }, []);
 
   const openLightbox = (index) => {
     setCurrentIndex(index);
@@ -33,17 +53,20 @@ const Hero = () => {
     return () => window.removeEventListener('keydown', handleKey);
   }, [currentIndex]);
 
+
+
+
   return (
-    <section className="container py-8 md:py-12 overflow-x-hidden">
+    <section className="container py-16 overflow-x-hidden">
       <div className='flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-8'>
-        <h1 className='text-4xl md:text-5xl lg:text-7xl font-extrabold -mb-2'>
+        <h1 ref={headingRef} className='text-4xl md:text-5xl lg:text-7xl font-extrabold -mb-2'>
           FIND YOUR<br />PERFECT HOME
         </h1>
         <div className='flex flex-col gap-4 md:max-w-md'>
-          <p className='text-md md:pr-[20%]'>
+          <p ref={paragraphRef} className='text-md md:pr-[20%]'>
             UrbanScope provides investors and innovators with the opportunity to grow... You are guaranteed to find a property that suits you.
           </p>
-          <Link to="/explore" className='flex gap-0'>
+          <Link ref={formRef} to="/explore" className='flex gap-0'>
             <input
               type='search'
               placeholder='Enter country, city or region'
@@ -59,6 +82,7 @@ const Hero = () => {
       {/* HERO IMAGE */}
       <div className='overflow-hidden rounded-lg shadow-lg mt-6 md:mt-8'>
         <img
+          ref={imageRef}
           src={hero}
           alt='Modern apartment building'
           className='w-full cursor-pointer hover:scale-[1.008] transition-all duration-300'
@@ -72,7 +96,7 @@ const Hero = () => {
         <div className="fixed inset-0 bg-dark/80 backdrop-blur-xs flex flex-col items-center justify-center z-50">
           <button className="absolute top-4 right-4 text-dark text-4xl cursor-pointer z-10 bg-light/70 rounded-full w-10 h-10 flex items-center justify-center hover:bg-light/80 transition-colors" onClick={closeLightbox}>&times;</button>
           <div className="relative max-w-3xl mx-auto w-full px-4">
-            <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="rounded-lg w-full" />
+            <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="rounded-lg w-full" loading='lazy' />
             <div className="absolute w-8 h-8 top-1/2 left-0 transform -translate-y-1/2 text-dark bg-light rounded-full shadow text-xl flex items-center justify-center cursor-pointer" onClick={prevSlide}>&#10094;</div>
             <div className="absolute w-8 h-8 top-1/2 right-0 transform -translate-y-1/2 text-dark bg-light rounded-full shadow text-xl flex items-center justify-center cursor-pointer" onClick={nextSlide}>&#10095;</div>
           </div>

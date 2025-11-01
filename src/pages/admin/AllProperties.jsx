@@ -2,10 +2,13 @@ import React, { useContext } from 'react';
 import { MdPersonAdd, MdDelete, MdEdit, MdAdd } from 'react-icons/md';
 import { PropertyContext } from "../../contexts/PropertyContext";
 import { AuthContext } from '../../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const AllProperties = () => {
+  const navigate = useNavigate();
+
   const { user, logout } = useContext(AuthContext);
   const { properties, loading, setLoading, getFormattedPrice } = useContext(PropertyContext);
 
@@ -30,13 +33,13 @@ const AllProperties = () => {
       All Properties 
 
       {/* Property Management */}
-      <div className="bg-white border border-dark/10 rounded-lg shadow-md">
+      <div className="bg-white border border-dark/10 rounded-lg shadow-md my-4">
         <div className="p-4 border-b flex justify-between items-center">
           <h3 className="text-xl font-semibold"> Property Management </h3>
           <span className="text-sm text-gray-500"> ({properties.length}) properties</span>
         </div>
 
-        <div className="divide-y max-h-96 overflow-y-auto">
+        <div className="divide-y  overflow-y-auto">
           {properties.slice(0, 10).map((property) => {
             const priceInfo = getFormattedPrice(property);
             
@@ -44,7 +47,7 @@ const AllProperties = () => {
               <div key={property._id} className="p-4 flex justify-between items-start group">
                 <div className="flex-1">
                   <div className='flex items-start gap-2'>
-                    <img src={property.images[0]} className='w-16 h-16 rounded' />
+                    <img src={property.images[0]} className='w-16 h-16 rounded' loading='lazy' />
                     <div>
                       <h4 className="font-semibold">{property.title}</h4>
                       <p className="text-gray-600 text-sm">{property.location}</p>

@@ -23,7 +23,7 @@ const Partners = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className='container py-16 bg-dark text-light  transition-colors duration-0 relative'>
+    <section ref={sectionRef} className='container py-16 bg-dark text-light transition-colors duration-0 relative'>
       <h2 className='text-2xl md:text-4xl lg:text-5xl font-bold text-center leading-tight mb-4 md:mb-8'> Better together. </h2>
       <p className='text-center'>
         UrbanScopre partners with industry leaders. 
