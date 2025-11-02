@@ -57,7 +57,7 @@ const Hero = () => {
 
 
   return (
-    <section className="container py-16 overflow-x-hidden">
+    <section className="container py-10 overflow-x-hidden">
       <div className='flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-8'>
         <h1 ref={headingRef} className='text-4xl md:text-5xl lg:text-7xl font-extrabold -mb-2'>
           FIND YOUR<br />PERFECT HOME
