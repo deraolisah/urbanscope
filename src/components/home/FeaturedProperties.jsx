@@ -1,13 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import PropertyPreview from './PropertyPreview';
 import { PropertyContext } from '../../contexts/PropertyContext';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const FeaturedProperties = () => {
-  const featuredSectionRef = useRef(null);
+  // const featuredSectionRef = useRef(null);
   const scrollContainerRef = useRef(null);
   const { featuredProperties, properties, loading, fetchFeaturedProperties } = useContext(PropertyContext);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -68,20 +64,6 @@ const FeaturedProperties = () => {
     }
   };
 
-  useEffect(() => {
-    const section = featuredSectionRef.current;
-
-    gsap.to(section, {
-      backgroundColor: '#1d1d1b',
-      color: '#fff',
-      scrollTrigger: {
-        trigger: section,
-        start: '-10% center',
-        end: '8% center',
-        scrub: true,
-      },
-    });
-  }, []);
 
   if (loading) return <div className="container text-center py-8"> Loading Featured Properties... </div>;
 
@@ -97,7 +79,7 @@ const FeaturedProperties = () => {
   const displayProperties = featuredProperties.slice(0, 4);
 
   return (
-    <section ref={featuredSectionRef} className="container py-16 transition-colors duration-50 relative">
+    <section className="container py-16 transition-colors duration-50 relative">
       {/* Featured Properties Section */}
       <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-center leading-tight uppercase mb-4 md:mb-8">
         Featured Properties
@@ -108,18 +90,18 @@ const FeaturedProperties = () => {
         {/* Properties Grid/Scroll */}
         <div 
           ref={scrollContainerRef}
-          className='w-full h-full flex gap-4 overflow-x-scroll lg:grid lg:grid-cols-4 lg:gap-4 scrollbar-hidden snap-x snap-mandatory'
+          className='w-full h-full flex gap-4 overflow-x-scroll lg:grid lg:grid-cols-4 scrollbar-hidden snap-x snap-mandatory'
           onScroll={handleScroll}
         >
           {displayProperties.map((property, index) => (
             <div key={property._id} className='flex-shrink-1 snap-start'>
               <PropertyPreview property={property} />
-              <hr className='my-8 border-light/20' />
+              {/* <hr className='mt-8 border-dark/10' /> */}
             </div>
           ))}
         </div>
 
-        <div className='flex items-center justify-between'>
+        <div className='flex items-center justify-between mt-8'>
           {/* Dot Pagination */}
           {showControls && (
             <div className='flex ml-auto items-center justify-start gap-3'>
@@ -129,8 +111,8 @@ const FeaturedProperties = () => {
                   onClick={() => scrollToIndex(index)}
                   className={`w-2.5 h-2.5 rounded-full cursor-pointer transition-all duration-300 ${
                     currentIndex === index 
-                      ? 'bg-light scale-125' 
-                      : 'bg-light/30 hover:bg-dark/60'
+                      ? 'bg-dark scale-125' 
+                      : 'bg-dark/30 hover:bg-dark/60'
                   }`}
                   aria-label={`Go to property ${index + 1}`}
                 />

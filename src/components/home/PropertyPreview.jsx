@@ -20,7 +20,7 @@ const PropertyPreview = ({ property }) => {
 
         <div className='relative h-full'>
           <div className='bg-dark/30 w-full h-full rounded absolute z-1 inset-0 select-none'></div>
-          <Link to={`/property/${property._id}`} className="flex btn border-0 bg-dark/60 backdrop-blur-xs !p-3 w-fit rounded-full absolute z-2 bottom-2 right-2" onClick={() => { scrollTo(0,0)}}>
+          <Link to={`/property/${property._id}`} className="flex btn border-0 text-light bg-light/20 backdrop-blur-xs !p-2.5 w-fit rounded-full absolute z-2 bottom-2 right-2 shadow" onClick={() => { scrollTo(0,0)}}>
             {/* View details  */}
             <HiMiniArrowRight />
           </Link>
@@ -39,7 +39,7 @@ const PropertyPreview = ({ property }) => {
           )}
 
           {property.price && (
-            <p className="text-xl md:text-2xl font-extrabold absolute bottom-2 left-2 z-2"> 
+            <p className="text-xl md:text-2xl font-extrabold absolute bottom-2 left-2 z-2 text-light bg-light/20 border border-light/5 backdrop-blur-xs rounded px-2 shadow"> 
               {priceInfo.formatted}
               {priceInfo.suffix && (
                 <span className='font-normal text-base'> {priceInfo.suffix} </span>
