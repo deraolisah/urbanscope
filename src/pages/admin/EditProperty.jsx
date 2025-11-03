@@ -520,7 +520,7 @@ const EditProperty = () => {
                       <img
                         src={image}
                         alt={`Property ${index + 1}`}
-                        className="w-full h-24 object-cover rounded-md"
+                        className="w-full h-28 object-cover rounded-md"
                         loading='lazy'
                       />
                       <button
@@ -556,7 +556,7 @@ const EditProperty = () => {
                       <img
                         src={URL.createObjectURL(image)}
                         alt={`New ${index + 1}`}
-                        className="w-full h-26 object-cover rounded-md"
+                        className="w-full h-28 object-cover rounded-md"
                         loading='lazy'
                       />
                       <button

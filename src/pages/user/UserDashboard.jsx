@@ -41,11 +41,11 @@ const UserDashboard = () => {
   }
 
   return (
-    <div className="p-6">
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="text-2xl font-bold">
+    <section className="container !px-0 md:!px-2">
+      <div className="flex flex-wrap justify-between items-center gap-2 mb-8">
+        <h2 className="text-2xl font-bold flex items-center">
           Welcome back, {user?.username.toUpperCase()} 
-          <span className="text-sm font-normal ml-2 bg-blue-100 text-blue-800 px-2 py-1 rounded">
+          <span className="text-sm font-normal ml-2 bg-blue-100 text-blue-800 px-2 py-0.5 rounded">
             {user?.role}
           </span>
         </h2>
@@ -56,21 +56,21 @@ const UserDashboard = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <h3 className="text-lg font-semibold mb-2">My Favorites</h3>
+          <h3 className="text-lg font-semibold mb-2"> My Favorites </h3>
           <p className="text-3xl font-bold text-blue-600">{favorites.length}</p>
-          <p className="text-gray-600">Saved properties</p>
+          <p className="text-gray-600"> Saved properties </p>
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <h3 className="text-lg font-semibold mb-2">Inquiries</h3>
-          <p className="text-3xl font-bold text-green-600">0</p>
-          <p className="text-gray-600">Pending inquiries</p>
+          <h3 className="text-lg font-semibold mb-2"> Inquiries </h3>
+          <p className="text-3xl font-bold text-green-600"> 0 </p>
+          <p className="text-gray-600"> Pending inquiries </p>
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <h3 className="text-lg font-semibold mb-2">Viewed</h3>
-          <p className="text-3xl font-bold text-purple-600">0</p>
-          <p className="text-gray-600">Recently viewed</p>
+          <h3 className="text-lg font-semibold mb-2"> Viewed </h3>
+          <p className="text-3xl font-bold text-purple-600"> 0 </p>
+          <p className="text-gray-600"> Recently viewed </p>
         </div>
       </div>
 
@@ -125,7 +125,7 @@ const UserDashboard = () => {
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -43,7 +43,7 @@ const Navbar = () => {
     <nav ref={navRef} className="w-full h-16 border-b border-dark/10 bg-white sticky top-0 z-50">
       <div className='container h-full flex items-center justify-between relative bg-light z-2'>
         <Link to="/" onClick={() => { window.scrollTo(0,0); closeMenu(); windows.reload(); }} className="text-base font-extrabold uppercase flex items-center gap-2"> 
-          <img src={logo} alt='UrbanScope Logo' className='h-8' />
+          <img src={logo} alt='UrbanScope Logo' className='h-5 md:h-6' />
         </Link>
 
         <ul className='hidden md:flex items-center space-x-8'>
@@ -108,7 +108,7 @@ const Navbar = () => {
             </div>
           </>
         ) : (
-          <Link to="/login" onClick={closeMenu} className="btn w-full text-center"> Sign In </Link>
+          <Link to="/login" onClick={() => { closeMenu(); scrollTo(0,0) }} className="btn w-full text-center"> Sign In </Link>
         )}
       </ul>
 

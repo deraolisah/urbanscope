@@ -12,7 +12,7 @@ const Footer = () => {
         {/* Company Info */}
         <div className="lg:col-span-2">
           <Link to="/" onClick={() => { window.scrollTo(0,0); }} className=""> 
-            <img src={logo} alt='UrbanScope Logo' className='h-8' />
+            <img src={logo} alt='UrbanScope Logo' className='h-7' />
           </Link>
           <p className="text-gray-300 mt-4 mb-6"> 
             Empowering home seekers with smart insights to find the perfect property and elevate their living experience. 
@@ -96,7 +96,7 @@ const Footer = () => {
             &copy; 2025 UrbanScope Realty. All rights reserved.
           </p>
           <p className="mt-1 text-xs">
-            Built by <a href="https://deraolisah.com/" target="_blank" rel="noopener noreferrer" className='underline hover:text-white'>Nathaniel</a>
+            Built by <a href="https://deraolisah.com/" target="_blank" rel="noopener noreferrer" className='underline hover:text-white'> Nathan </a>
           </p>
         </div>
         <div className="flex flex-wrap justify-start gap-x-6 gap-y-2 mb-4 md:mb-0">

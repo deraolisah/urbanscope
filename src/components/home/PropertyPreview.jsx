@@ -48,7 +48,7 @@ const PropertyPreview = ({ property }) => {
           )}
         </div>
         <div className='mt-2'>
-          <p className="font-medium text-xs"> {property.location} </p>
+          <p className="font-medium text-xs text-dark/80"> {property.location} </p>
           <p className="text-sm"> {property.description.slice(0,68) + "..."} </p>        
         </div>
       </div>

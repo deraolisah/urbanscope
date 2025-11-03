@@ -47,7 +47,7 @@ const AllProperties = () => {
               <div key={property._id} className="p-4 flex justify-between items-start group">
                 <div className="flex-1">
                   <div className='flex items-start gap-2'>
-                    <img src={property.images[0]} className='w-16 h-16 rounded' loading='lazy' />
+                    <img src={property.images[0]} className='w-16 h-16 rounded object-center object-cover' loading='lazy' />
                     <div>
                       <h4 className="font-semibold">{property.title}</h4>
                       <p className="text-gray-600 text-sm">{property.location}</p>
