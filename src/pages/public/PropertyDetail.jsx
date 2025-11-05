@@ -249,7 +249,7 @@ const PropertyDetail = () => {
     
     if (currentMedia.type === 'video') {
       return (
-        <div className="relative w-full h-0 pb-[56.25%]"> {/* 16:9 aspect ratio */}
+        <div className="relative w-full h-0 pb-[56.25%] shadow-lg"> {/* 16:9 aspect ratio */}
           <iframe
             src={getVideoEmbedUrl(currentMedia.url)}
             className="absolute top-0 left-0 w-full h-full rounded-lg"
@@ -265,7 +265,7 @@ const PropertyDetail = () => {
         <img
           src={currentMedia.url}
           alt={`Slide ${currentIndex + 1}`}
-          className="rounded-lg w-fit mx-auto h-full object-cover max-h-[70vh]"
+          className="rounded-lg w-fit mx-auto h-full object-cover max-h-[70vh] shadow-lg"
           loading='lazy'
         />
       );
@@ -336,9 +336,9 @@ const PropertyDetail = () => {
 
       {/* Combined Lightbox for Video and Images */}
       {isLightboxOpen && (
-        <div className="lightbox fixed w-full h-full top-0 left-0 bg-dark/90 backdrop-blur-sm flex flex-col items-center justify-center z-50 p-4">
+        <div className="lightbox fixed w-full h-full top-0 left-0 bg-light flex flex-col items-center justify-center z-50 p-4">
           <button
-            className="absolute top-4 right-4 text-dark text-4xl cursor-pointer z-10 bg-light/70 rounded-full w-10 h-10 flex items-center justify-center hover:bg-light/80 transition-colors"
+            className="absolute top-4 right-4 text-dark text-3xl font-bold cursor-pointer z-10 bg-dark/10 rounded-full w-8 h-8 flex items-center justify-center hover:bg-dark/20 transition-colors"
             onClick={closeLightbox}
           >
             &times;
@@ -368,10 +368,10 @@ const PropertyDetail = () => {
               <span
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ${
+                className={`w-8 h-2.5 rounded-full cursor-pointer transition-all duration-300 ${
                   currentIndex === index 
-                    ? media.type === 'video' ? 'bg-blue-600 scale-125' : 'bg-white scale-125'
-                    : 'bg-light/40 hover:bg-light'
+                    ? media.type === 'video' ? 'bg-blue-600 scale-120' : 'bg-dark scale-125'
+                    : 'bg-dark/40 hover:bg-light'
                 }`}
                 title={media.type === 'video' ? 'Video Tour' : `Image ${index}`}
               ></span>
@@ -379,7 +379,7 @@ const PropertyDetail = () => {
           </div>
 
           {/* Media counter and type indicator */}
-          <div className="text-white mt-2 text-center">
+          <div className="text-dark mt-4 text-center">
             <p className="text-sm">
               {currentIndex + 1} / {totalMediaItems}
             </p>
