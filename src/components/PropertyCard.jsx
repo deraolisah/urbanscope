@@ -32,7 +32,7 @@ const PropertyCard = ({ property }) => {
         {priceInfo.transactionType}
       </div>
       {/* Property Type Badge */}
-      <div className={`absolute z-1 top-2 left-14 px-2 py-1 shadow rounded lowercase text-xs font-semibold pointer-events-none bg-light/80 backdrop-blur-xs text-dark`}>
+      <div className={`absolute z-1 top-2 left-14 px-2 py-1 shadow rounded lowercase text-xs font-medium pointer-events-none bg-light/80 backdrop-blur-xs text-dark`}>
         {property.propertyType}
       </div>
 

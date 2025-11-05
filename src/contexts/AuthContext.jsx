@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
 
   const API_URL = import.meta.env.VITE_API_URL;
 
+  
   // Set default authorization header
   useEffect(() => {
     if (token) {

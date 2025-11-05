@@ -19,6 +19,9 @@ import Accessibility from '../pages/public/Accessibility';
 // AUTH
 import Login from '../pages/auth/Login';
 import ProtectedRoute from '../components/ProtectedRoute';
+import ResetPassword from '../pages/auth/ResetPassword.jsx';
+import VerifyCode from '../pages/auth/VerifyCode.jsx';
+import ForgotPassword from '../pages/auth/ForgotPassword';
 
 // USER DASHBOARD
 import UserDashboard from '../pages/user/UserDashboard';
@@ -36,7 +39,6 @@ import Settings from '../pages/admin/Settings';
 
 // ERROR 404
 import NotFound from '../pages/NotFound';
-import ForgotPassword from '../pages/auth/ForgotPassword';
 
 
 const AppRoutes = () => {
@@ -60,6 +62,8 @@ const AppRoutes = () => {
           {/* AUTH */}
           <Route path='/login' element={<Login />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
+          <Route path='/verify-code' element={<VerifyCode />} />
+          <Route path='/reset-password' element={<ResetPassword />} />
         </Route>
         
         

@@ -343,7 +343,7 @@ const PropertyDetail = () => {
   return (
     <div className="container py-4 space-y-8 relative">
       {/* Back button */}
-      <button onClick={() => window.history.back()} className="absolute z-2 ml-2 mt-2 text-xs md:text-sm btn-secondary border border-light/5 text-light bg-light/20 backdrop-blur-xs text-shadow-2xs shadow">
+      <button onClick={() => window.history.back()} className="absolute z-2 ml-2 mt-2 text-xs md:text-sm btn-secondary border border-light/5 text-light bg-light/20 backdrop-blur-xs text-shadow-sm shadow">
         <HiMiniChevronLeft className='text-lg -mr-2' />
         Go back
       </button>
@@ -392,7 +392,7 @@ const PropertyDetail = () => {
         {/* Show "More" button if there are more media items than displayed */}
         {totalMediaItems > (hasVideo ? 4 : 4) && (
           <button 
-            className='flex items-center gap-1 absolute z-4 bottom-0 md:bottom-2 right-2 btn-tertiary py-1.5 w-fit cursor-pointer pointer-events-none rounded-full text-xs' 
+            className='flex items-center gap-1 absolute z-4 bottom-0 md:bottom-2 right-2 btn-tertiary py-1.5 w-fit cursor-pointer pointer-events-none rounded-full shadow text-xs' 
             onClick={() => openLightbox(hasVideo ? 4 : 4)}
           > 
             <AiOutlinePicture />

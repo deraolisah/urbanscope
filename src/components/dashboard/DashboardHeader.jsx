@@ -29,12 +29,14 @@ const DashboardHeader = ({ isOpen, onMenuClick }) => {
       <div className="container h-full flex items-center justify-between relative bg-light z-2">
         {/* Left side - Menu button and logo */}
         <div className="flex items-center space-x-2 sm:space-x-4">
-          <button 
-            className="p-2 rounded-md text-dark bg-dark/5 hover:bg-dark/10 lg:hidden cursor-pointer"
-            onClick={onMenuClick}
-          >
-            {!isOpen ? (<FiMenu className="h-5 w-5" />) : (<FiX className="h-5 w-5" />)}
-          </button>
+          {user.role === "admin" && (
+            <button 
+              className="p-2 rounded-md text-dark bg-dark/5 hover:bg-dark/10 lg:hidden cursor-pointer"
+              onClick={onMenuClick}
+            >
+              {!isOpen ? (<FiMenu className="h-5 w-5" />) : (<FiX className="h-5 w-5" />)}
+            </button>
+          )}
           
           {/* Logo for mobile */}
           <div className="flex flex-1">
@@ -46,7 +48,7 @@ const DashboardHeader = ({ isOpen, onMenuClick }) => {
 
         {/* Right side - Notifications and user menu */}
         <div className="flex items-center space-x-2 sm:space-x-4">
-          <button className="p-2.5 rounded bg-dark/5 text-gray-600 hover:bg-gray-100 relative hidden sm:block">
+          <button className="p-2.5 rounded bg-dark/5 text-gray-600 hover:bg-gray-100 relative sm:block">
             <FiBell className="h-5 w-5" />
             <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
           </button>
@@ -54,7 +56,7 @@ const DashboardHeader = ({ isOpen, onMenuClick }) => {
           <div className="relative">
             <button
               onClick={() => setShowUserMenu(!showUserMenu)}
-              className="flex items-center gap-2 p-1 px-1.5 rounded bg-dark/5 hover:bg-dark/5"
+              className="flex items-center gap-2 p-1 px-1.5 rounded bg-dark/5 hover:bg-dark/5 cursor-pointer"
             >
               <div className="w-8 h-8 bg-dark/10 rounded-full flex items-center justify-center">
                 <FiUser className="h-4 w-4" />
