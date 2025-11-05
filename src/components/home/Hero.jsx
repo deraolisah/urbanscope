@@ -94,7 +94,7 @@ const Hero = () => {
       {/* LIGHTBOX MODAL */}
       {isOpen && (
         <div className="fixed inset-0 w-full h-full bg-light flex flex-col items-center justify-center z-50">
-          <button className="absolute top-4 right-4 text-dark text-3xl font-bold cursor-pointer z-10 bg-dark/10 rounded-full w-8 h-8 flex items-center justify-center hover:bg-dark/20 transition-colors" onClick={closeLightbox}> &times; </button>
+          <button className="absolute top-4 right-4 text-dark text-3xl font-bold cursor-pointer z-10 bg-dark/20 rounded-full w-8 h-8 flex items-center justify-center hover:bg-dark/40 transition-colors" onClick={closeLightbox}> &times; </button>
           <div className="relative max-w-3xl mx-auto w-full px-4">
             <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="rounded-lg w-full max-h-100 object-cover shadow-lg" loading='lazy' />
             <div className="absolute w-8 h-8 top-1/2 left-0 transform -translate-y-1/2 text-dark bg-light rounded-full shadow text-xl flex items-center justify-center cursor-pointer" onClick={prevSlide}>&#10094;</div>
@@ -106,7 +106,7 @@ const Hero = () => {
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-8 h-2.5 rounded-full cursor-pointer transition-all duration-300 ${
-                  currentIndex === index ? 'bg-dark scale-120' : 'bg-dark/40 hover:bg-dark/50'
+                  currentIndex === index ? 'bg-dark scale-120' : 'bg-dark/20 hover:bg-dark/40'
                 }`}
               ></span>
             ))}

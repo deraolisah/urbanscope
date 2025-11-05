@@ -31,6 +31,10 @@ const PropertyCard = ({ property }) => {
       <div className={`absolute z-1 top-2 left-2 px-2 py-1 shadow rounded text-xs font-semibold pointer-events-none ${priceInfo.badge}`}>
         {priceInfo.transactionType}
       </div>
+      {/* Property Type Badge */}
+      <div className={`absolute z-1 top-2 left-14 px-2 py-1 shadow rounded lowercase text-xs font-semibold pointer-events-none bg-light/80 backdrop-blur-xs text-dark`}>
+        {property.propertyType}
+      </div>
 
       <div className={`absolute z-1 top-2 right-2 px-2 py-1 shadow rounded text-sm font-semibold pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-300 ${priceInfo.badge}`}>
         <BsArrowUpRight />
@@ -59,9 +63,9 @@ const PropertyCard = ({ property }) => {
             {isFavorite(property._id) ? <HiHeart className="text-lg" /> : <HiOutlineHeart className="text-lg" />}
           </button>
         </div>
-        <p className='text-sm uppercase font-bold'> {property.title} </p>
-        <p className='text-sm text-dark/60 space-x-2 font-semibold flex items-center'> 
-          <span className='text-nowrap'> 
+        <p className='text-sm uppercase font-bold line-clamp-1 truncate'> {property.title} </p>
+        <p className='text-sm text-dark/60 space-x-2 font-semibold flex items-center line-clamp-1 text-nowrap truncate'> 
+          <span className=''> 
             {property.location} 
           </span>
           <span> • </span> 

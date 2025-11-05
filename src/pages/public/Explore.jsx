@@ -45,13 +45,17 @@ const SkeletonPropertyList = () => (
 );
 
 const Explore = () => {
+  const { properties, loading, fetchProperties } = useContext(PropertyContext);
   const [priceRange, setPriceRange] = useState({ min: 100, max: 1000000000 });
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [showFilter, setShowFilter] = useState(false);
   const [showLayout, setShowLayout] = useState('grid');
   const [sortBy, setSortBy] = useState('price');
-  const [searchQuery, setSearchQuery] = useState(''); // New search state
-  const { properties, loading, fetchProperties } = useContext(PropertyContext);
+  const [searchQuery, setSearchQuery] = useState('');
+
+    // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(6); // Show 9 properties per page
 
   const toggleFilter = () => setShowFilter(!showFilter);
 
@@ -64,7 +68,8 @@ const Explore = () => {
   const resetFilters = () => {
     setPriceRange({ min: 100, max: 1000000000 });
     setSelectedTypes([]);
-    setSearchQuery(''); // Reset search on filter reset
+    setSearchQuery('');
+    setCurrentPage(1);
   };
 
   const handleSortChange = (e) => {
@@ -75,6 +80,7 @@ const Explore = () => {
   const handleSearch = (e) => {
     if (e.type === 'keydown' && e.key !== 'Enter') return;
     setSearchQuery(e.target.value.trim());
+    setCurrentPage(1);
   };
 
   // Clear search
@@ -170,6 +176,38 @@ const Explore = () => {
           return 0;
       }
     });
+
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredProperties.length / itemsPerPage);
+  
+  // Get current properties for the page
+  const indexOfLastProperty = currentPage * itemsPerPage;
+  const indexOfFirstProperty = indexOfLastProperty - itemsPerPage;
+  const currentProperties = filteredProperties.slice(indexOfFirstProperty, indexOfLastProperty);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  // Go to next page
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  // Go to previous page
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  // Reset to page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, priceRange, selectedTypes, sortBy]);
+
 
   return (
     <div className="flex min-h-screen bg-dark/5 relative container md:!p-0">
@@ -289,7 +327,7 @@ const Explore = () => {
               >
                 <option value="all"> All Cities </option>
                 <option value="lagos-m"> Lagos - Mainland </option>
-                <option value="lagos-i"> lagos - Island </option>
+                <option value="lagos-i"> Lagos - Island </option>
                 <option value="london"> London </option>
                 <option value="dubai"> Dubai </option>
                 <option value="shanghai"> Shanghai </option>
@@ -372,13 +410,13 @@ const Explore = () => {
           {/* Skeleton for property cards */}
           {showLayout === "grid" ? (
             <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 gap-4">
-              {[...Array(8)].map((_, index) => (
+              {[...Array(6)].map((_, index) => ( // Changed to 6 for pagination
                 <SkeletonPropertyCard key={index} />
               ))}
             </div>
           ) : (
             <div className="flex flex-col gap-4">
-              {[...Array(6)].map((_, index) => (
+              {[...Array(6)].map((_, index) => ( // Changed to 6 for pagination
                 <SkeletonPropertyList key={index} />
               ))}
             </div>
@@ -398,21 +436,13 @@ const Explore = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={handleSearch}
-              className='py-1.5 px-3 border border-dark/10 focus:border-dark w-full !rounded placeholder:text-sm' 
+              className='py-1 px-3 border border-dark/10 focus:border-dark w-full !rounded placeholder:text-sm' 
             />
-            {/* <button 
-              type='button' 
-              onClick={handleSearch}
-              className='btn py-1.5 px-4 rounded-none rounded-r w-fit'
-            >
-              Search 
-            </button> */}
           </div>
 
           <div className='w-full flex items-center justify-between sm:justify-end gap-2'>
             {/* Sort */}
             <div className="text-dark/80 flex items-center gap-1">
-              {/* Sort By */}
               <select 
                 className="focus:outline-none cursor-pointer text-sm text-dark/60 font-medium p-1.5 rounded border border-dark/10 "
                 value={sortBy}
@@ -472,17 +502,17 @@ const Explore = () => {
           </div>
         )}
 
-        {/* Property Display */}
+        {/* Property Display - UPDATED to use currentProperties */}
         <div className=''>
           {showLayout === "grid" ? (
             <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 gap-4">
-              {filteredProperties.map(property => (
+              {currentProperties.map(property => (
                 <PropertyCard key={property._id} property={property} />
               ))}
             </div>
           ) : (
             <div className="flex flex-col gap-4">
-              {filteredProperties.map(property => (
+              {currentProperties.map(property => (
                 <PropertyList key={property._id} property={property} />
               ))}
             </div>
@@ -511,12 +541,67 @@ const Explore = () => {
           </div>
         )}
 
-        {/* Pagination */}
-        <div className='rounded-md text-center flex items-center justify-between'>
-          <button className='btn-tertiary w-fit'> Previous </button>
-          <span className='bg-light p-2.5 px-4 rounded-md'> Page 1 / 2 </span>
-          <button className='btn-tertiary w-fit'> Next </button>
-        </div>
+        {/* Pagination - UPDATED */}
+        {/* {filteredProperties.length > itemsPerPage && ( */}
+          <div className='rounded-md text-center flex items-center justify-between'>
+            <button 
+              className='btn-tertiary w-fit disabled:opacity-50 disabled:cursor-not-allowed' 
+              onClick={() => {prevPage(); scrollTo(0,0) }}
+              disabled={currentPage === 1}
+              title='Previous Page'
+              >
+              Previous
+            </button>
+
+            <div className="flex justify-center items-center gap-2">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(number => (
+                <button
+                  key={number}
+                  onClick={() => paginate(number)}
+                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${
+                    currentPage === number
+                      ? 'bg-dark text-white'
+                      : 'bg-light text-dark/60 hover:bg-dark/10'
+                  }`}
+                >
+                  {number}
+                </button>
+              ))}
+            </div>
+            
+            {/* <span className='bg-light p-2.5 px-4 rounded-md btn-tertiary w-fit'>
+              {currentPage} / {totalPages}
+            </span> */}
+            
+            <button 
+              className='btn-tertiary w-fit disabled:opacity-50 disabled:cursor-not-allowed' 
+              onClick={() => {nextPage(); scrollTo(0,0) }}
+              disabled={currentPage === totalPages}
+              title='Next Page'
+            >
+              Next
+            </button>
+          </div>
+        {/* )} */}
+
+        {/* Page Numbers - Optional: Add page number buttons */}
+        {/* {filteredProperties.length > itemsPerPage && (
+          <div className="flex justify-center items-center gap-2 mt-4">
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map(number => (
+              <button
+                key={number}
+                onClick={() => paginate(number)}
+                className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${
+                  currentPage === number
+                    ? 'bg-dark text-white'
+                    : 'bg-light text-dark/60 hover:bg-dark/10'
+                }`}
+              >
+                {number}
+              </button>
+            ))}
+          </div>
+        )} */}
       </main>
       )}
     </div>

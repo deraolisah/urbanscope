@@ -9,6 +9,37 @@ import { FavoritesContext } from "../../contexts/FavoritesContext";
 import "./PropertyDetail.css";
 import gsap from "gsap";
 
+// Loading spinner component - moved outside to avoid hook issues
+const LoadingSpinner = ({ type = 'image' }) => (
+  <div className="flex flex-col items-center justify-center w-full h-full absolute inset-0 bg-light rounded-lg">
+    <div className={`animate-spin rounded-full h-12 w-12 border-b-2 ${
+      type === 'video' ? 'border-blue-600' : 'border-dark'
+    }`}></div>
+    <p className="mt-3 text-dark/60 text-sm">
+      {type === 'video' ? 'Loading video...' : 'Loading image...'}
+    </p>
+  </div>
+);
+
+// Error state component - moved outside to avoid hook issues
+const ErrorState = ({ type = 'image', onRetry }) => (
+  <div className="flex flex-col items-center justify-center w-full h-full absolute inset-0 bg-light rounded-lg p-4">
+    <div className="text-red-500 text-4xl mb-2">⚠️</div>
+    <p className="text-dark/60 text-center text-sm">
+      {type === 'video' 
+        ? 'Failed to load video. Please check your connection.' 
+        : 'Failed to load image. Please try again.'
+      }
+    </p>
+    <button 
+      onClick={onRetry}
+      className="mt-3 px-4 py-2 bg-dark/10 hover:bg-dark/20 rounded text-sm transition-colors"
+    >
+      Retry
+    </button>
+  </div>
+);
+
 const PropertyDetail = () => {
   const [pricing, setPricing] = useState(false);
   const [agentDetails, setAgentDetails] = useState(false);
@@ -16,13 +47,11 @@ const PropertyDetail = () => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [videoThumbnail, setVideoThumbnail] = useState('');
-
-  useEffect(() => {
-    if (isLightboxOpen) {
-      gsap.fromTo(".lightbox", { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'power2.out' });
-    }
-  }, [isLightboxOpen]);
   
+  // Loading states for each media item
+  const [loadingStates, setLoadingStates] = useState({});
+  const [errorStates, setErrorStates] = useState({});
+
   const { id } = useParams();
   const { properties, loading, getFormattedPrice } = useContext(PropertyContext);
   const { toggleFavorite, isFavorite } = useContext(FavoritesContext);
@@ -31,6 +60,28 @@ const PropertyDetail = () => {
   const priceInfo = property ? getFormattedPrice(property) : null;
 
   const hasVideo = property?.videoUrl && property.videoUrl.trim() !== '';
+
+  // Create combined media array (video + images)
+  const mediaItems = [];
+  if (hasVideo && property) {
+    mediaItems.push({
+      type: 'video',
+      url: property.videoUrl,
+      thumbnail: videoThumbnail
+    });
+  }
+
+  if (property) {
+    property.images.forEach((img, index) => {
+      mediaItems.push({
+        type: 'image',
+        url: img,
+        index: index
+      });
+    });
+  }
+
+  const totalMediaItems = mediaItems.length;
 
   // Function to extract YouTube video ID
   const getYouTubeVideoId = (url) => {
@@ -54,14 +105,6 @@ const PropertyDetail = () => {
     if (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
       const videoId = getYouTubeVideoId(videoUrl);
       if (videoId) {
-        // Different quality options for YouTube thumbnails:
-        // maxresdefault.jpg - Highest quality (might not always be available)
-        // sddefault.jpg - Standard quality
-        // hqdefault.jpg - High quality
-        // mqdefault.jpg - Medium quality
-        // default.jpg - Low quality
-        
-        // Try maxresdefault first, fallback to hqdefault
         return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
       }
     }
@@ -70,8 +113,6 @@ const PropertyDetail = () => {
     if (videoUrl.includes('vimeo.com')) {
       const videoId = getVimeoVideoId(videoUrl);
       if (videoId) {
-        // We'll need to fetch this from Vimeo's API, but for now return a placeholder
-        // You can implement Vimeo API call if needed
         return `https://vumbnail.com/${videoId}.jpg`;
       }
     }
@@ -107,7 +148,7 @@ const PropertyDetail = () => {
       }
     }
     
-    return thumbnailQualities[thumbnailQualities.length - 1]; // Return default as fallback
+    return thumbnailQualities[thumbnailQualities.length - 1];
   };
 
   // Effect to generate and set video thumbnail
@@ -121,13 +162,11 @@ const PropertyDetail = () => {
       try {
         const videoUrl = property.videoUrl;
         
-        // If property already has a videoThumbnail, use it
         if (property.videoThumbnail) {
           setVideoThumbnail(property.videoThumbnail);
           return;
         }
 
-        // YouTube videos
         if (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
           const videoId = getYouTubeVideoId(videoUrl);
           if (videoId) {
@@ -136,19 +175,14 @@ const PropertyDetail = () => {
           } else {
             setVideoThumbnail(property.images[0] || '');
           }
-        }
-        // Vimeo videos
-        else if (videoUrl.includes('vimeo.com')) {
+        } else if (videoUrl.includes('vimeo.com')) {
           const videoId = getVimeoVideoId(videoUrl);
           if (videoId) {
-            // Using vumbnail.com service for Vimeo thumbnails
             setVideoThumbnail(`https://vumbnail.com/${videoId}.jpg`);
           } else {
             setVideoThumbnail(property.images[0] || '');
           }
-        }
-        // Direct video files or unsupported platforms
-        else {
+        } else {
           setVideoThumbnail(property.images[0] || '');
         }
       } catch (error) {
@@ -160,31 +194,28 @@ const PropertyDetail = () => {
     generateThumbnail();
   }, [property, hasVideo]);
 
+  // GSAP animation effect
+  useEffect(() => {
+    if (isLightboxOpen) {
+      gsap.fromTo(".lightbox", { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'power2.out' });
+    }
+  }, [isLightboxOpen]);
 
-  if (loading) return <div className="container py-4">Loading...</div>;
-  if (!property) return <div className="container py-4">Property not found</div>;
+  // Reset loading states when lightbox opens
+  useEffect(() => {
+    if (isLightboxOpen) {
+      setLoadingStates({});
+      setErrorStates({});
+    }
+  }, [isLightboxOpen]);
 
+  // Initialize loading state when media changes
+  useEffect(() => {
+    if (isLightboxOpen && loadingStates[currentIndex] === undefined) {
+      setLoadingStates(prev => ({ ...prev, [currentIndex]: true }));
+    }
+  }, [currentIndex, isLightboxOpen, loadingStates]);
 
-  // Create combined media array (video + images)
-  const mediaItems = [];
-  if (hasVideo) {
-    mediaItems.push({
-      type: 'video',
-      url: property.videoUrl,
-      thumbnail: videoThumbnail
-    });
-  }
-
-  // Add all images
-  property.images.forEach(img => {
-    mediaItems.push({
-      type: 'image',
-      url: img
-    });
-  });
-
-  const totalMediaItems = mediaItems.length;
-  
   const openLightbox = (index) => {
     setCurrentIndex(index);
     setIsLightboxOpen(true);
@@ -210,16 +241,13 @@ const PropertyDetail = () => {
     setAgentDetails(!agentDetails);
   }
   
-  // Handle favorite toggle
   const handleFavoriteToggle = async () => {
     await toggleFavorite(property._id);
   };
 
-  // Function to get embed URL for different video platforms
   const getVideoEmbedUrl = (url) => {
     if (!url) return '';
     
-    // YouTube
     if (url.includes('youtube.com') || url.includes('youtu.be')) {
       const videoId = getYouTubeVideoId(url);
       if (videoId) {
@@ -227,7 +255,6 @@ const PropertyDetail = () => {
       }
     }
     
-    // Vimeo
     if (url.includes('vimeo.com')) {
       const videoId = getVimeoVideoId(url);
       if (videoId) {
@@ -235,7 +262,6 @@ const PropertyDetail = () => {
       }
     }
     
-    // Direct video URL (mp4, webm, etc.)
     if (url.match(/\.(mp4|webm|ogg)$/i)) {
       return url;
     }
@@ -243,34 +269,76 @@ const PropertyDetail = () => {
     return url;
   }
 
+  // Handle media load
+  const handleMediaLoad = (index) => {
+    setLoadingStates(prev => ({ ...prev, [index]: false }));
+    setErrorStates(prev => ({ ...prev, [index]: false }));
+  };
+
+  // Handle media error
+  const handleMediaError = (index) => {
+    setLoadingStates(prev => ({ ...prev, [index]: false }));
+    setErrorStates(prev => ({ ...prev, [index]: true }));
+  };
+
+  // Handle retry for media
+  const handleRetry = (index) => {
+    setErrorStates(prev => ({ ...prev, [index]: false }));
+    setLoadingStates(prev => ({ ...prev, [index]: true }));
+  };
+
   // Function to render lightbox content
   const renderLightboxContent = () => {
+    if (!property || mediaItems.length === 0) return null;
+
     const currentMedia = mediaItems[currentIndex];
+    const isLoading = loadingStates[currentIndex];
+    const hasError = errorStates[currentIndex];
     
     if (currentMedia.type === 'video') {
       return (
-        <div className="relative w-full h-0 pb-[56.25%] shadow-lg"> {/* 16:9 aspect ratio */}
-          <iframe
-            src={getVideoEmbedUrl(currentMedia.url)}
-            className="absolute top-0 left-0 w-full h-full rounded-lg"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            title="Property video tour"
-          ></iframe>
+        <div className="relative w-full h-0 pb-[56.25%] shadow-lg">
+          {isLoading && <LoadingSpinner type="video" />}
+          {hasError && <ErrorState type="video" onRetry={() => handleRetry(currentIndex)} />}
+          {!hasError && (
+            <iframe
+              src={getVideoEmbedUrl(currentMedia.url)}
+              className={`absolute top-0 left-0 w-full h-full rounded-lg ${
+                isLoading ? 'opacity-0' : 'opacity-100'
+              } transition-opacity duration-300`}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              title="Property video tour"
+              onLoad={() => handleMediaLoad(currentIndex)}
+              onError={() => handleMediaError(currentIndex)}
+            />
+          )}
         </div>
       );
     } else {
       return (
-        <img
-          src={currentMedia.url}
-          alt={`Slide ${currentIndex + 1}`}
-          className="rounded-lg w-fit mx-auto h-full object-cover max-h-[70vh] shadow-lg"
-          loading='lazy'
-        />
+        <div className="relative w-full h-full flex items-center justify-center">
+          {isLoading && <LoadingSpinner type="image" />}
+          {hasError && <ErrorState type="image" onRetry={() => handleRetry(currentIndex)} />}
+          {!hasError && (
+            <img
+              src={currentMedia.url}
+              alt={`Property image ${currentIndex + 1}`}
+              className={`rounded-lg max-h-[70vh] w-auto object-contain shadow-lg ${
+                isLoading ? 'opacity-0' : 'opacity-100'
+              } transition-opacity duration-300`}
+              onLoad={() => handleMediaLoad(currentIndex)}
+              onError={() => handleMediaError(currentIndex)}
+            />
+          )}
+        </div>
       );
     }
   };
+
+  if (loading) return <div className="container py-4">Loading...</div>;
+  if (!property) return <div className="container py-4">Property not found</div>;
 
   return (
     <div className="container py-4 space-y-8 relative">
@@ -291,7 +359,6 @@ const PropertyDetail = () => {
               className="w-full h-full object-cover"
               loading='lazy'
               onError={(e) => {
-                // Fallback if thumbnail fails to load
                 e.target.src = property.images[0] || null;
               }}
             />
@@ -306,7 +373,7 @@ const PropertyDetail = () => {
           </div>
         )}
 
-        {/* Regular images - adjust starting index based on video presence */}
+        {/* Regular images */}
         {property.images.slice(0, hasVideo ? 3 : 4).map((img, index) => (
           <div 
             key={index} 
@@ -338,7 +405,7 @@ const PropertyDetail = () => {
       {isLightboxOpen && (
         <div className="lightbox fixed w-full h-full top-0 left-0 bg-light flex flex-col items-center justify-center z-50 p-4">
           <button
-            className="absolute top-4 right-4 text-dark text-3xl font-bold cursor-pointer z-10 bg-dark/10 rounded-full w-8 h-8 flex items-center justify-center hover:bg-dark/20 transition-colors"
+            className="absolute top-4 right-4 text-dark text-3xl font-bold cursor-pointer z-10 bg-dark/20 rounded-full w-8 h-8 flex items-center justify-center hover:bg-dark/40 transition-colors"
             onClick={closeLightbox}
           >
             &times;
@@ -371,7 +438,7 @@ const PropertyDetail = () => {
                 className={`w-8 h-2.5 rounded-full cursor-pointer transition-all duration-300 ${
                   currentIndex === index 
                     ? media.type === 'video' ? 'bg-blue-600 scale-120' : 'bg-dark scale-125'
-                    : 'bg-dark/40 hover:bg-light'
+                    : 'bg-dark/20 hover:bg-dark/40'
                 }`}
                 title={media.type === 'video' ? 'Video Tour' : `Image ${index}`}
               ></span>
@@ -382,26 +449,17 @@ const PropertyDetail = () => {
           <div className="text-dark mt-4 text-center">
             <p className="text-sm">
               {currentIndex + 1} / {totalMediaItems}
+              {mediaItems[currentIndex]?.type === 'video' && ' • Video'}
             </p>
           </div>
         </div>
       )}
 
-      {/* Property details */}
+      {/* Rest of the component remains the same */}
       <div className='grid md:grid-cols-2 gap-4 space-y-8 pb-4'>
         <div className="flex flex-col items-start gap-1.5">
-        {/* Property Header with Transaction Badge */}
-        {/* <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <h3 className='text-xl font-extrabold uppercase'> {property.title} </h3>
-            <span className={`px-3 py-1 rounded-full text-sm font-semibold border ${priceInfo.badge}`}>
-              For {priceInfo.transactionType}
-            </span>
-          </div>
-        </div> */}
           <h3 className='text-xl font-extrabold uppercase'> {property.title} </h3>
           <p className="text-sm font-normal flex items-center gap-1"> <GrLocation /> {property.location} </p>
-          {/* Updated Price Display */}
           <h3 className="text-4xl font-extrabold mt-4">
             {priceInfo.formatted}
             <span className='text-base font-normal text-dark/80'> 
