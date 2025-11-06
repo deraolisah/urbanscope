@@ -20,10 +20,17 @@ const PropertyList = ({ property }) => {
 
   return (
     <div className='w-full flex items-center hover:shadow-md rounded-sm overflow-hidden bg-light relative group'>
+      {/* Property Type Badge */}
+      <div className={`absolute z-1 top-2 left-2 px-2 py-1 shadow rounded Capitalize text-xs font-medium pointer-events-none bg-light/80 backdrop-blur-xs text-dark`}>
+        {property.propertyType}
+      </div>
+
       {/* Transaction Type Badge */}
-      <div className={`absolute z-1 top-2 left-2 px-2 py-1 shadow rounded text-xs font-semibold pointer-events-none ${priceInfo.badge}`}>
+      <div className={`absolute z-1 top-9.5 left-2 px-2 py-1 shadow rounded text-xs font-semibold pointer-events-none ${priceInfo.badge}`}>
         {priceInfo.transactionType}
       </div>
+
+
       <Link to={`/property/${property._id}`} onClick={() => { scrollTo(0,0); }} className='w-[50%] h-full overflow-hidden'>
         <img src={property.images[0]} alt={property.title} className="w-full h-full object-cover aspect-8/10 md:aspect-5/4 scale-[1.04] group-hover:scale-[1] transition-all duration-500" loading='lazy' />
       </Link>
@@ -44,9 +51,20 @@ const PropertyList = ({ property }) => {
         <p className='text-sm text-dark/60 font-semibold'> {property.location} </p>
         <p className='text-dark/80 text-xs mt-2 hidden sm:flex'> {property.description.slice(0,60) + "..."} </p>
         <p className='space-x-2 text-dark/80 flex items-center'>
-          <span className='text-xs md:text-sm flex items-center gap-2'> {property.bedrooms} beds <LiaBedSolid className='hidden sm:flex' /> </span>
-          <span> • </span>
-          <span className='text-xs md:text-sm flex items-center gap-2'> {property.bathrooms} baths <LiaBathSolid className='hidden sm:flex' /> </span>
+          {property.bedrooms > 1 && (
+            <span className='text-xs md:text-sm flex items-center gap-2'> 
+              {property.bedrooms} beds 
+              <LiaBedSolid className='hidden sm:flex' /> 
+            </span>
+          )}
+
+          {property.bathrooms > 1 && (
+            <span className='text-xs md:text-sm flex items-center gap-2'>
+              • &nbsp;
+              {property.bathrooms} baths 
+              <LiaBathSolid className='hidden sm:flex' /> 
+            </span>
+          )}
         </p>
       </div>
     </div>

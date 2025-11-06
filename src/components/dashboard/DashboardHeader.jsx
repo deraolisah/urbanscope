@@ -37,11 +37,11 @@ const DashboardHeader = ({ isOpen, onMenuClick }) => {
               {!isOpen ? (<FiMenu className="h-5 w-5" />) : (<FiX className="h-5 w-5" />)}
             </button>
           )}
-          
+
           {/* Logo for mobile */}
           <div className="flex flex-1">
             <Link to="/" onClick={() => { window.scrollTo(0,0); closeMenu(); }} className="text-base font-extrabold uppercase flex items-center gap-2"> 
-              <img src={logo} alt='UrbanScope Logo' className='h-8' />
+              <img src={logo} alt='UrbanScope Logo' className='h-5 md:h-6' />
             </Link>
           </div>
         </div>

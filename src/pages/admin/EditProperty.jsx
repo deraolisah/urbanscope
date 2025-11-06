@@ -213,12 +213,12 @@ const EditProperty = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="bg-white rounded-lg shadow-md p-6">
+    <section className="pb-8">
+      <div className="">
+        <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-800"> Edit Property </h1>
-            <button onClick={() => navigate('/admin')} className="btn-tertiary w-fit">
+            <button onClick={() => navigate('/admin')} className="btn-tertiary w-fit text-sm">
               Back to Dashboard
             </button>
           </div>
@@ -611,7 +611,7 @@ const EditProperty = () => {
           </form>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

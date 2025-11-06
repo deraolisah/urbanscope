@@ -77,7 +77,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <ul className={`z-2 relative w-full h-screen overflow-y-auto md:hidden flex flex-col items-start space-y-4 p-4 pb-6 bg-white border-t border-gray-200 transition-all duration-400 ${isMenuOpen ? "translate-y-0 pointer-events-auto" : "-translate-y-20 opacity-0 pointer-events-none" }`}>
+      <ul className={`z-2 relative w-full h-screen overflow-y-auto md:hidden flex flex-col items-start space-y-4 p-4 pb-6 bg-white border-t border-gray-200 transition-all duration-500 ${isMenuOpen ? "translate-x-0 pointer-events-auto" : "translate-x-[101%] opacity-0 pointer-events-none" }`}>
         <Link to="/" onClick={closeMenu} className="text-dark hover:text-dark/60 w-full"> Home </Link>
         <Link to="/explore" onClick={closeMenu} className="text-dark hover:text-dark/60 w-full"> Explore </Link>
         <Link to="/about" onClick={closeMenu} className="text-dark hover:text-dark/60 w-full"> About </Link>

@@ -30,7 +30,7 @@ const AllProperties = () => {
 
   return (
     <section className='pb-8'> 
-      All Properties 
+      {/* All Properties  */}
 
       {/* Property Management */}
       <div className="bg-white border border-dark/10 rounded-lg shadow-md my-4">
@@ -57,9 +57,6 @@ const AllProperties = () => {
                     <span className="text-sm font-medium">
                       {priceInfo.formatted}{priceInfo.suffix}
                     </span>
-                    <span className="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded">
-                      {property.propertyType}
-                    </span>
                     <span className={`text-xs px-2 py-1 rounded ${
                       property.status === 'active' ? 'bg-green-100 text-green-800' :
                       property.status === 'sold' ? 'bg-blue-100 text-blue-800' :
@@ -67,6 +64,12 @@ const AllProperties = () => {
                       'bg-red-100 text-red-800'
                     }`}>
                       {property.status}
+                    </span>
+                    <span className="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded">
+                      {property.propertyType}
+                    </span>
+                    <span className="text-xs bg-dark/20 text-dark px-2 py-1 rounded">
+                      {property.propertyTransaction}
                     </span>
                     {property.featured && (
                       <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">

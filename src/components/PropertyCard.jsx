@@ -26,7 +26,7 @@ const PropertyCard = ({ property }) => {
   )}
 
   return (
-    <div className='w-full flex flex-col items-start hover:shadow-md rounded-sm overflow-hidden bg-light relative group'>
+    <div className='w-full flex flex-col items-start hover:shadow rounded-sm overflow-hidden bg-light relative group'>
       {/* Transaction Type Badge */}
       <div className={`absolute z-1 top-2 left-2 px-2 py-1 shadow rounded text-xs font-semibold pointer-events-none ${priceInfo.badge}`}>
         {priceInfo.transactionType}
@@ -40,8 +40,8 @@ const PropertyCard = ({ property }) => {
         <BsArrowUpRight />
       </div>
 
-      {/* <div className={`absolute top-0 right-0 w-full h-full z-1 bg-dark/15 px-2 py-1 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-300`}>
-      </div> */}
+      <div className={`absolute top-0 right-0 w-full h-full z-1 bg-dark/5 px-2 py-1 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-300`}>
+      </div>
       
       <Link to={`/property/${property._id}`} onClick={() => { scrollTo(0,0); }} className='w-full aspect-16/8 md:aspect-16/9 overflow-hidden'>
         <img src={property.images[0]} alt={property.title} className="w-full object-cover object-center scale-[1.06] group-hover:scale-[1.02] transition-transform duration-500 ease-in-out" loading='lazy' />
@@ -68,16 +68,18 @@ const PropertyCard = ({ property }) => {
           <span className=''> 
             {property.location} 
           </span>
-          <span> • </span> 
-          <span className='text-xs flex items-center gap-1'> 
-            {property.bedrooms} beds 
-            {/* <LiaBedSolid className='text-sm' />  */}
-          </span>
-          <span> • </span> 
-          <span className='text-xs flex items-center gap-1'> 
-            {property.bathrooms} baths 
-            {/* <LiaBathSolid  className='text-sm' />  */}
-          </span>
+
+          {property.bedrooms > 1 && (
+            <span className='text-xs flex items-center gap-1'> 
+              • &nbsp; {property.bedrooms} beds 
+            </span>
+          )}
+          
+          {property.bathrooms > 1 && (
+            <span className='text-xs flex items-center gap-1'> 
+              • &nbsp; {property.bathrooms} baths 
+            </span>
+          )}
         </p>
       </div>
     </div>

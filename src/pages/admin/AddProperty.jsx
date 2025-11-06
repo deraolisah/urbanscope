@@ -189,9 +189,9 @@ const AddProperty = () => {
   };
 
   return (
-    <div className="">
+    <section className="pb-8">
       <div className="">
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-800"> Add New Property </h1>
             <button onClick={() => navigate('/admin')} className="w-fit btn-tertiary"> Back to Dashboard </button>
@@ -421,13 +421,13 @@ const AddProperty = () => {
                   {formData.amenities.map((amenity, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-1 bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
+                      className="flex items-center gap-1 bg-dark/5 text-dark px-3 py-1 rounded-full text-sm"
                     >
                       <span>{amenity}</span>
                       <button
                         type="button"
                         onClick={() => handleRemoveAmenity(index)}
-                        className="text-blue-600 hover:text-blue-800 ml-1"
+                        className="text-dark ml-1"
                       >
                         ×
                       </button>
@@ -571,7 +571,7 @@ const AddProperty = () => {
           </form>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
