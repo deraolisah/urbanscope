@@ -92,10 +92,10 @@ const AppRoutes = () => {
           }
         >
           <Route index element={<AdminDashboard />} />
+          <Route path="add-agent" element={<AddAgent />} />
+          <Route path="add-property" element={<AddProperty />} />
           <Route path="properties" element={<AllProperties />} />
           <Route path="users" element={<AllUsers />} />
-          <Route path="add-property" element={<AddProperty />} />
-          <Route path="add-agent" element={<AddAgent />} />
           <Route path="edit-property/:id" element={<EditProperty />} />
           <Route path="settings" element={<Settings />} />
           {/* Add more admin routes here */}

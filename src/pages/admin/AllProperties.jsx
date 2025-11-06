@@ -34,12 +34,12 @@ const AllProperties = () => {
 
       {/* Property Management */}
       <div className="bg-white border border-dark/10 rounded-lg shadow-md my-4">
-        <div className="p-4 border-b flex justify-between items-center">
+        <div className="p-4 border-b border-dark/20 flex justify-between items-center">
           <h3 className="text-xl font-semibold"> Property Management </h3>
           <span className="text-sm text-gray-500"> ({properties.length}) properties</span>
         </div>
 
-        <div className="divide-y  overflow-y-auto">
+        <div className="divide-y divide-dark/20 overflow-y-auto">
           {properties.slice(0, 10).map((property) => {
             const priceInfo = getFormattedPrice(property);
             

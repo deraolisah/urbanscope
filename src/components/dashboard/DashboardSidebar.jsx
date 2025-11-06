@@ -42,6 +42,16 @@ const DashboardSidebar = ({ isOpen, onClose }) => {
       icon: LuChartNoAxesCombined
     },
     {
+      name: 'Add Agent',
+      path: '/admin/add-agent',
+      icon: FiUserPlus
+    },
+    {
+      name: 'Add Property',
+      path: '/admin/add-property',
+      icon: MdOutlineDomainAdd
+    },
+    {
       name: 'All Properties',
       path: '/admin/properties',
       icon: BsBuildings
@@ -50,16 +60,6 @@ const DashboardSidebar = ({ isOpen, onClose }) => {
       name: 'All Users',
       path: '/admin/users',
       icon: FiUsers
-    },
-    {
-      name: 'Add Property',
-      path: '/admin/add-property',
-      icon: MdOutlineDomainAdd
-    },
-    {
-      name: 'Add Agent',
-      path: '/admin/add-agent',
-      icon: FiUserPlus
     },
     // {
     //   name: 'Track',

@@ -210,7 +210,7 @@ const Explore = () => {
 
 
   return (
-    <div className="flex min-h-screen bg-dark/5 relative container md:!p-0">
+    <div className="flex min-h-screen  relative container md:!p-0">
       {showFilter && (
         <div
           onClick={() => setShowFilter(false)}
@@ -219,7 +219,7 @@ const Explore = () => {
       )}
 
       {/* Sidebar Filters */}
-      <aside className={`md:block w-full md:w-1/4 bg-white p-6 pb-8 shadow-md left-0 md:sticky z-10 md:top-16 fixed h-[68%] md:min-h-screen md:h-full overflow-y-auto scrollbar-hidden md:overflow-y-visible rounded-t-2xl md:rounded-t-none bottom-0 md:opacity-100 md:translate-y-0 md:pointer-events-auto transition-all duration-400 ${showFilter ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-20 pointer-events-none"}`}>
+      <aside className={`md:block w-full md:w-1/4 bg-white p-6 pb-8 md:border-r border-dark/5 left-0 md:sticky z-10 md:top-16 fixed h-[68%] md:min-h-screen md:h-full overflow-y-auto scrollbar-hidden md:overflow-y-visible rounded-t-2xl md:rounded-t-none bottom-0 md:opacity-100 md:translate-y-0 md:pointer-events-auto transition-all duration-400 ${showFilter ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-20 pointer-events-none"}`}>
         <div className="sticky top-20 space-y-6">
           <h2 className="text-xl font-extrabold w-full flex items-center justify-between">
             Filter <span className='font-normal text-base'> ({filteredProperties.length} results) </span>
