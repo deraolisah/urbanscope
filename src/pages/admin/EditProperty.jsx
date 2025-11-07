@@ -192,7 +192,7 @@ const EditProperty = () => {
 
       setSuccess('Property updated successfully!');
       setTimeout(() => {
-        navigate('/admin');
+        navigate('/admin/properties');
       }, 2000);
     } catch (error) {
       console.error('Error updating property:', error);

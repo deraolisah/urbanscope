@@ -9,7 +9,7 @@ import { PropertyContext } from '../../contexts/PropertyContext';
 // Skeleton Loader Components (unchanged)
 const SkeletonPropertyCard = () => (
   <div className="bg-white rounded-lg shadow-md overflow-hidden">
-    <div className="h-48 bg-gray-300"></div>
+    <div className="h-38 bg-gray-300"></div>
     <div className="p-4 space-y-3">
       <div className="h-4 bg-gray-300 rounded w-3/4"></div>
       <div className="h-3 bg-gray-300 rounded w-1/2"></div>
@@ -210,7 +210,7 @@ const Explore = () => {
 
 
   return (
-    <div className="flex min-h-screen  relative container md:!p-0">
+    <div className="flex relative container md:!p-0">
       {showFilter && (
         <div
           onClick={() => setShowFilter(false)}
@@ -219,7 +219,7 @@ const Explore = () => {
       )}
 
       {/* Sidebar Filters */}
-      <aside className={`md:block w-full md:w-1/4 bg-white p-6 pb-8 md:border-r border-dark/5 left-0 md:sticky z-10 md:top-16 fixed h-[68%] md:min-h-screen md:h-full overflow-y-auto scrollbar-hidden md:overflow-y-visible rounded-t-2xl md:rounded-t-none bottom-0 md:opacity-100 md:translate-y-0 md:pointer-events-auto transition-all duration-400 ${showFilter ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-20 pointer-events-none"}`}>
+      <aside className={`md:block w-full md:w-1/4 bg-white p-6 pb-8 md:border-r border-dark/10 left-0 md:sticky z-10 md:top-16 fixed h-[68%] md:min-h-screen md:h-full overflow-y-auto scrollbar-hidden md:overflow-y-visible rounded-t-2xl md:rounded-t-none bottom-0 md:opacity-100 md:translate-y-0 md:pointer-events-auto transition-all duration-400 ${showFilter ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-20 pointer-events-none"}`}>
         <div className="sticky top-20 space-y-6">
           <h2 className="text-xl font-extrabold w-full flex items-center justify-between">
             Filter <span className='font-normal text-base'> ({filteredProperties.length} results) </span>
@@ -558,10 +558,10 @@ const Explore = () => {
                 <button
                   key={number}
                   onClick={() => paginate(number)}
-                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${
+                  className={`w-8 h-8 rounded-sm text-sm font-medium transition-colors cursor-pointer ${
                     currentPage === number
                       ? 'bg-dark text-white'
-                      : 'bg-light text-dark/60 hover:bg-dark/10'
+                      : 'bg-dark/5 border border-dark/5 text-dark/60 hover:bg-dark/10'
                   }`}
                 >
                   {number}

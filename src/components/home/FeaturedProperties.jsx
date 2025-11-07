@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import PropertyPreview from './PropertyPreview';
 import { PropertyContext } from '../../contexts/PropertyContext';
+import { MdSkipNext, MdSkipPrevious } from "react-icons/md";
 
 const FeaturedProperties = () => {
   // const featuredSectionRef = useRef(null);
@@ -128,14 +129,16 @@ const FeaturedProperties = () => {
                 className="bg-white/20 hover:bg-white text-dark rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center shadow-lg border border-dark/10 transition-all duration-200 hover:scale-110"
                 aria-label="Previous properties"
               >
-                &#10094;
+                {/* &#10094; */}
+                <MdSkipPrevious />
               </button>
               <button 
                 onClick={nextSlide}
                 className="bg-white/20 hover:bg-white text-dark rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center shadow-lg border border-dark/10 transition-all duration-200 hover:scale-110"
                 aria-label="Next properties"
               >
-                &#10095;
+                {/* &#10095; */}
+                <MdSkipNext />
               </button>
             </div>
           )}
