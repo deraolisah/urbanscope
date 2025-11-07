@@ -297,7 +297,7 @@ const PropertyDetail = () => {
     
     if (currentMedia.type === 'video') {
       return (
-        <div className="relative w-full h-0 pb-[56.25%] shadow-lg">
+        <div className="relative w-full h-0 shadow-lg">
           {isLoading && <LoadingSpinner type="video" />}
           {hasError && <ErrorState type="video" onRetry={() => handleRetry(currentIndex)} />}
           {!hasError && (
@@ -403,7 +403,7 @@ const PropertyDetail = () => {
 
       {/* Combined Lightbox for Video and Images */}
       {isLightboxOpen && (
-        <div className="lightbox fixed w-full h-full top-0 left-0 bg-light flex flex-col items-center justify-center z-50 p-4">
+        <div className="fixed w-full h-full top-0 left-0 bg-light flex flex-col items-center justify-center z-50 p-4">
           <button
             className="absolute top-4 right-4 text-dark text-3xl font-bold cursor-pointer z-10 bg-dark/20 rounded-full w-8 h-8 flex items-center justify-center hover:bg-dark/40 transition-colors"
             onClick={closeLightbox}

@@ -43,7 +43,7 @@ import NotFound from '../pages/NotFound';
 
 const AppRoutes = () => {
   return (
-    <div className='font-body bg-light text-dark'>
+    <div className='font-body bg-light text-dark overflow-x-hidden'>
       <Routes>
         {/* PUBLIC */}
         <Route element={<PublicLayout />}>

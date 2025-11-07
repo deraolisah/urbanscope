@@ -20,7 +20,7 @@ const PropertyPreview = ({ property }) => {
 
         <div className='relative h-full'>
           <div className='bg-dark/30 w-full h-full rounded absolute z-1 inset-0 select-none'></div>
-          <Link to={`/property/${property._id}`} className="flex btn border-0 text-light bg-light/20 backdrop-blur-xs !p-2.5 w-fit rounded-full absolute z-2 bottom-2 right-2 shadow" onClick={() => { scrollTo(0,0)}}>
+          <Link to={`/property/${property._id}`} className="flex btn border-0 text-light bg-light/20 backdrop-blur-xs !p-2.5 w-fit rounded-full absolute z-2 bottom-2 right-2 shadow" onClick={() => { scrollTo(0,0) }}>
             {/* View details  */}
             <HiMiniArrowRight />
           </Link>
