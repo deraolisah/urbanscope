@@ -297,7 +297,7 @@ const PropertyDetail = () => {
     
     if (currentMedia.type === 'video') {
       return (
-        <div className="relative w-full h-0 shadow-lg">
+        <div className="relative w-full h-0 pb-[56.25%] shadow-lg">
           {isLoading && <LoadingSpinner type="video" />}
           {hasError && <ErrorState type="video" onRetry={() => handleRetry(currentIndex)} />}
           {!hasError && (
