@@ -18,6 +18,7 @@ const Hero = () => {
 
   const headingRef = useRef(null);
   const paragraphRef = useRef(null);
+  const btnRef = useRef(null);
   const formRef = useRef(null);
   const imageRef = useRef(null);
   
@@ -28,6 +29,7 @@ const Hero = () => {
     
     tl.fromTo(headingRef.current, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.4, ease: 'power3.out' })
     .fromTo(paragraphRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, "-=0.4")
+    .fromTo(btnRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.88, ease: 'power3.out' }, "-=0.4")
     .fromTo(formRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, "-=0.4");
 
     tl.fromTo(imageRef.current, { scale: 0.95, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'power3.out' }, "-=0.6");
@@ -66,7 +68,10 @@ const Hero = () => {
           <p ref={paragraphRef} className='text-md md:pr-[20%]'>
             UrbanScope provides investors and innovators with the opportunity to grow... You are guaranteed to find a property that suits you.
           </p>
-          <Link ref={formRef} to="/explore" className='flex gap-0'>
+          <Link ref={btnRef} to="/explore" className='btn'>
+            Explore Properties
+          </Link>
+          {/* <Link ref={formRef} to="/explore" className='flex gap-0'>
             <input
               type='search'
               placeholder='Enter country, city or region'
@@ -75,7 +80,7 @@ const Hero = () => {
             <button className='btn w-fit rounded-l-none rounded-r-lg'>
               <HiMiniArrowRight />
             </button>
-          </Link>
+          </Link> */}
         </div>
       </div>
 
