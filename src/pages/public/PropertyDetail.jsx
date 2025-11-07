@@ -403,7 +403,7 @@ const PropertyDetail = () => {
 
       {/* Combined Lightbox for Video and Images */}
       {isLightboxOpen && (
-        <div className="fixed w-full h-full top-0 left-0 bg-light flex flex-col items-center justify-center z-50 p-4">
+        <div className="fixed w-full h-full top-0 left-0 bg-light flex flex-col items-center justify-center z-50 p-0">
           <button
             className="absolute top-4 right-4 text-dark text-3xl font-bold cursor-pointer z-10 bg-dark/20 rounded-full w-8 h-8 flex items-center justify-center hover:bg-dark/40 transition-colors"
             onClick={closeLightbox}
