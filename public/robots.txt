@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /login/
+Disallow: /forgot-password/
+Disallow: /verify-code/
+Disallow: /reset-password/
+Allow: /
+
+Sitemap: https://www.urbanscope.netlify.app/sitemap.xml

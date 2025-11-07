@@ -8,6 +8,9 @@ import { PropertyContext } from "../../contexts/PropertyContext";
 import { FavoritesContext } from "../../contexts/FavoritesContext";
 import "./PropertyDetail.css";
 import gsap from "gsap";
+// import { Helmet } from 'react-helmet';
+
+
 
 // Loading spinner component - moved outside to avoid hook issues
 const LoadingSpinner = ({ type = 'image' }) => (
@@ -60,6 +63,12 @@ const PropertyDetail = () => {
   const priceInfo = property ? getFormattedPrice(property) : null;
 
   const hasVideo = property?.videoUrl && property.videoUrl.trim() !== '';
+
+
+  // <Helmet>
+  //   <title> {property.title} | UrbanScope </title>
+  //   <meta name="description" content={`Explore ${property.title} located in ${property.location}. ${property.summary}`} />
+  // </Helmet>
 
   // Create combined media array (video + images)
   const mediaItems = [];
