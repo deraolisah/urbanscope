@@ -29,10 +29,10 @@ const Hero = () => {
     
     tl.fromTo(headingRef.current, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.4, ease: 'power3.out' })
     .fromTo(paragraphRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, "-=0.4")
-    .fromTo(btnRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.88, ease: 'power3.out' }, "-=0.4")
+    .fromTo(btnRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, "-=0.4")
     .fromTo(formRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, "-=0.4");
 
-    tl.fromTo(imageRef.current, { scale: 0.95, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'power3.out' }, "-=0.6");
+    tl.fromTo(imageRef.current, { y: 10, scale: 0.95, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.6, ease: 'power3.out' }, "-=0.4");
   }, []);
 
   const openLightbox = (index) => {
@@ -85,7 +85,7 @@ const Hero = () => {
       </div>
 
       {/* HERO IMAGE */}
-      <div className='overflow-hidden rounded-lg shadow-lg mt-6 md:mt-8'>
+      <div className='overflow-hidden rounded-lg mt-6 md:mt-8'>
         <img
           ref={imageRef}
           src={hero}
