@@ -108,7 +108,7 @@ UrbanScope is built with a mobile-first approach, ensuring optimal experience ac
 
 ### Deployment
 - Frontend (Netlify/Vercel)
-- Backend (Vercel/Railway)
+- Backend (Vercel/Railway/Render)
 
 ### Deploy dist folder to hosting service
 - Configure environment variables
@@ -121,8 +121,8 @@ UrbanScope is built with a mobile-first approach, ensuring optimal experience ac
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ### Team
-- Chidera Olisah (Nathan)
-*Lead Developer & Architect*
+- Chidera Olisah (Nathan) /n
+*Lead Developer & Architect* /n
 **GitHub Profile** [https://github.com/deraolisah/]
 
 <!-- Full-stack development, system architecture, and project leadership -->
