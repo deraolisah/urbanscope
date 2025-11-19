@@ -121,8 +121,8 @@ UrbanScope is built with a mobile-first approach, ensuring optimal experience ac
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ### Team
-- Chidera Olisah (Nathan) /n
-*Lead Developer & Architect* /n
+- Chidera Olisah (Nathan) ␣␣
+*Lead Developer & Architect* ␣␣
 **GitHub Profile** [https://github.com/deraolisah/]
 
 <!-- Full-stack development, system architecture, and project leadership -->
