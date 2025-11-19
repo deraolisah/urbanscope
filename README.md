@@ -97,12 +97,11 @@ Advanced Search Features
 - Locations and cities
 - Property types and features
 - Amenities and specifications
-
-**Smart Filtering:**
-// Example search matches:
-"luxury apartment lagos" → Luxury properties in Lagos
-"3 bedroom pool" → 3-bedroom properties with pools
-"gated community" → Properties in secure communities
+- **Smart Filtering:**
+  *Example search matches:*
+ - "luxury apartment lagos" → Luxury properties in Lagos
+ - "3 bedroom pool" → 3-bedroom properties with pools
+ - "gated community" → Properties in secure communities
 
 - Real-time Results: Instant updates with search term highlighting
 - Search History: Persistent search terms for returning users
@@ -123,19 +122,20 @@ Advanced Search Features
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ### Team
-Chidera Olisah (Nathan)
-Lead Developer & Architect
-GitHub Profile
-Full-stack development, system architecture, and project leadership
+- Chidera Olisah (Nathan)
+*Lead Developer & Architect*
+**GitHub Profile** [https://github.com/deraolisah/]
+
+<!-- Full-stack development, system architecture, and project leadership -->
 
 ### Acknowledgments
-React Community - Excellent documentation and ecosystem
-Vite Team - Fast and efficient build tooling
-Tailwind CSS - Utility-first CSS framework
-MongoDB - Reliable and scalable database solutions
-Deepseek - AI assistance for debugging and optimization
-Open Source Community - Continuous inspiration and support
+- **React Community** - Excellent documentation and ecosystem
+- **Vite Team** - Fast and efficient build tooling
+- **Tailwind CSS** - Utility-first CSS framework
+- **MongoDB** - Reliable and scalable database solutions
+- **Deepseek** - AI assistance for debugging and optimization
+- **Open Source Community** - Continuous inspiration and support
 
 
 
-Built with ❤️ using modern web technologies
+Built with ❤️ using modern web technologies.
