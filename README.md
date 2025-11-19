@@ -98,10 +98,10 @@ Advanced Search Features
 - Property types and features
 - Amenities and specifications
 - **Smart Filtering:**
-  *Example search matches:*
- - "luxury apartment lagos" → Luxury properties in Lagos
- - "3 bedroom pool" → 3-bedroom properties with pools
- - "gated community" → Properties in secure communities
+  - - *Example search matches:*
+  - - "luxury apartment lagos" → Luxury properties in Lagos
+  - - "3 bedroom pool" → 3-bedroom properties with pools
+  - - "gated community" → Properties in secure communities
 
 - Real-time Results: Instant updates with search term highlighting
 - Search History: Persistent search terms for returning users
