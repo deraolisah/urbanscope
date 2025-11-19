@@ -100,8 +100,8 @@ UrbanScope is built with a mobile-first approach, ensuring optimal experience ac
 - **Smart Filtering:**
   -  *Example search matches:*
   -  "luxury apartment lagos" → Luxury properties in Lagos
-  - - "3 bedroom pool" → 3-bedroom properties with pools
-  - - "gated community" → Properties in secure communities
+  -  "3 bedroom pool" → 3-bedroom properties with pools
+  -  "gated community" → Properties in secure communities
 - Real-time Results: Instant updates with search term highlighting
 - Search History: Persistent search terms for returning users
 - No-Results Intelligence: Helpful suggestions when no matches found
