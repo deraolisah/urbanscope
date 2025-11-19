@@ -91,18 +91,17 @@ UrbanScope is built with a mobile-first approach, ensuring optimal experience ac
 - Desktop (> 1024px): Full-featured experience with advanced tools
 
 ### Search Capabilities
-Advanced Search Features
+<!-- Advanced Search Features -->
 - Multi-field Search: Simultaneously search across:
 - Property titles and descriptions
 - Locations and cities
 - Property types and features
 - Amenities and specifications
 - **Smart Filtering:**
-  - - *Example search matches:*
-  - - "luxury apartment lagos" → Luxury properties in Lagos
+  -  *Example search matches:*
+  -  "luxury apartment lagos" → Luxury properties in Lagos
   - - "3 bedroom pool" → 3-bedroom properties with pools
   - - "gated community" → Properties in secure communities
-
 - Real-time Results: Instant updates with search term highlighting
 - Search History: Persistent search terms for returning users
 - No-Results Intelligence: Helpful suggestions when no matches found
