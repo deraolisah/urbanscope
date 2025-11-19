@@ -123,9 +123,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ### Team
 - Chidera Olisah (Nathan)
 
-
 *Lead Developer & Architect*
-
 
 **GitHub Profile** [https://github.com/deraolisah/]
 
