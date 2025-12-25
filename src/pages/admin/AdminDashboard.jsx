@@ -126,26 +126,30 @@ const AdminDashboard = () => {
 
       {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <div className="bg-white border border-dark/10 p-4 md:p-6 rounded-lg shadow-md flex items-center justify-between">
+        <div className="bg-white border border-dark/10 p-4 md:p-6 rounded-lg shadow-md flex flex-col gap-0 md:gap-2 items-star justify-between">
           <h3 className="text-lg font-semibold">Total Users</h3>
+          <hr className='w-full border-px border-dark/40 my-2' />
           <p className="text-3xl font-extrabold">{stats.totalUsers}</p>
         </div>
           {/* <p className="text-gray-600">Registered users</p> */}
 
-        <div className="bg-white border border-dark/10 p-4 md:p-6 rounded-lg shadow-md flex items-center justify-between">
+        <div className="bg-white border border-dark/10 p-4 md:p-6 rounded-lg shadow-md flex flex-col gap-0 md:gap-2 items-start justify-between">
           <h3 className="text-lg font-semibold">Agents</h3>
+          <hr className='w-full border-px border-dark/40 my-2'/>
           <p className="text-3xl font-extrabold">{stats.totalAgents}</p>
         </div>
           {/* <p className="text-gray-600">Active agents</p> */}
 
-        <div className="bg-white border border-dark/10 p-4 md:p-6 rounded-lg shadow-md flex items-center justify-between">
+        <div className="bg-white border border-dark/10 p-4 md:p-6 rounded-lg shadow-md flex flex-col gap-0 md:gap-2 items-start justify-between">
           <h3 className="text-lg font-semibold">Properties</h3>
+          <hr className='w-full border-px border-dark/40 my-2'/>
           <p className="text-3xl font-extrabold">{stats.totalProperties}</p>
         </div>
           {/* <p className="text-gray-600">Listed properties</p> */}
 
-        <div className="bg-white border border-dark/10 p-4 md:p-6 rounded-lg shadow-md flex items-center justify-between">
+        <div className="bg-white border border-dark/10 p-4 md:p-6 rounded-lg shadow-md flex flex-col gap-0 md:gap-2 items-start justify-between">
           <h3 className="text-lg font-semibold">Admins</h3>
+          <hr className='w-full border-px border-dark/40 my-2'/>
           <p className="text-3xl font-extrabold">{stats.totalAdmins}</p>
         </div>
           {/* <p className="text-gray-600">System administrators</p> */}
@@ -154,11 +158,11 @@ const AdminDashboard = () => {
       <div className="w-full">
         {/* Users Management */}
         <div className="bg-white border border-dark/10 rounded-lg shadow-md">
-          <div className="p-4 border-b flex justify-between items-center">
+          <div className="p-4 border-b border-dark/40 flex justify-between items-center">
             <h3 className="text-xl font-semibold"> User Management </h3>
             <span className="text-sm text-gray-500"> ({users.length}) users </span>
           </div>
-          <div className="divide-y max-h-96 overflow-y-auto">
+          <div className="divide-y divide-dark/40 max-h-96 overflow-y-auto">
             {users.map((user) => (
               <div key={user._id} className="p-4 flex items-center justify-between">
                 <div>
