@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import DashboardHeader from '../components/dashboard/DashboardHeader';
 import DashboardSidebar from '../components/dashboard/DashboardSidebar';
 import { AuthContext } from '../contexts/AuthContext';
+import DashboardFooter from '../components/dashboard/DashboardFooter';
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
@@ -22,10 +23,11 @@ const DashboardLayout = () => {
       {user.role === "admin" && (
         <DashboardSidebar isOpen={sidebarOpen} onClose={closeSidebar} />
       )}
-      <main className={`${user.role === "admin" && "lg:ml-64"} min-h-screen`}>
+      <main className={`${user.role === "admin" && "lg:ml-64"} min-h-screen flex flex-col justify-between`}>
         <div className="p-4 md:p-6">
           <Outlet />
         </div>
+        <DashboardFooter />
       </main>
     </div>
   );

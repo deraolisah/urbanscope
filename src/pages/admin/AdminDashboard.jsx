@@ -106,15 +106,15 @@ const AdminDashboard = () => {
     <section className="space-y-8 pb-8">
       <div className="flex flex-wrap justify-between items-center gap-2">
         <div>
-          <h2 className="text-2xl font-bold flex items-start">
+          <h2 className="text-2xl font-bold flex items-center">
             Admin Dashboard
             <span className="text-xs font-normal ml-2 bg-red-100 text-red-800 px-2 py-1 rounded">
               {user?.role}
             </span>
           </h2>
-          <p className="text-xs text-gray-600 font-normal"> System administration panel</p>
+          <p className="text-xs text-gray-500 font-normal"> System administration panel</p>
         </div>
-        <div className="flex gap-4">
+        <div className="flex gap-2">
           <button onClick={() => navigate('/admin/add-property')} className="btn text-nowrap gap-2">
             <MdAdd /> Add Property
           </button>
@@ -125,8 +125,8 @@ const AdminDashboard = () => {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <div className="bg-white border border-dark/10 p-4 md:p-6 rounded-lg flex flex-col items-star justify-between">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+        <div className="bg-white border border-dark/10 py-2 p-4 md:p-6 rounded-lg flex flex-col items-star justify-between">
           <h3 className="text-lg font-semibold flex flex-col">
             Total Users
             <small className="text-xs text-gray-500 font-normal"> Registered users </small>
@@ -135,7 +135,7 @@ const AdminDashboard = () => {
           <p className="text-3xl font-extrabold">{stats.totalUsers}</p>
         </div>
 
-        <div className="bg-white border border-dark/10 p-4 md:p-6 rounded-lg flex flex-col items-start justify-between">
+        <div className="bg-white border border-dark/10 py-2 p-4 md:p-6 rounded-lg flex flex-col items-start justify-between">
           <h3 className="text-base md:text-lg font-semibold flex flex-col">
             Agents
             <small className="text-xs text-gray-500 font-normal"> Active agents </small>
@@ -144,7 +144,7 @@ const AdminDashboard = () => {
           <p className="text-3xl font-extrabold">{stats.totalAgents}</p>
         </div>
 
-        <div className="bg-white border border-dark/10 p-4 md:p-6 rounded-lg flex flex-col items-start justify-between">
+        <div className="bg-white border border-dark/10 py-2 p-4 md:p-6 rounded-lg flex flex-col items-start justify-between">
           <h3 className="text-base md:text-lg font-semibold flex flex-col">
             Properties
             <small className="text-xs text-gray-500 font-normal"> Listed properties</small>
@@ -153,7 +153,7 @@ const AdminDashboard = () => {
           <p className="text-3xl font-extrabold">{stats.totalProperties}</p>
         </div>
 
-        <div className="bg-white border border-dark/10 p-4 md:p-6 rounded-lg flex flex-col items-start justify-between">
+        <div className="bg-white border border-dark/10 py-2 p-4 md:p-6 rounded-lg flex flex-col items-start justify-between">
           <h3 className="text-base md:text-lg font-semibold flex flex-col">
             Admins
             <small className="text-xs text-gray-500 font-normal"> System administrators </small>
