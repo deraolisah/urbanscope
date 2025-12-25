@@ -49,18 +49,16 @@ const DashboardHeader = ({ isOpen, onMenuClick }) => {
         {/* Right side - Notifications and user menu */}
         <div className="flex items-center space-x-2">
           <button className="p-2.5 rounded bg-dark/10 text-gray-600 hover:bg-gray-100 relative sm:block cursor-pointer">
-            <FiBell className="h-5 w-5" />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full animate-ping"></span>
+            <FiBell className="h-4.5 w-4.5" />
+            <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full animate-ping"></span>
           </button>
 
           <div className="">
             <button
               onClick={() => setShowUserMenu(!showUserMenu)}
-              className="flex items-center gap-2 p-1 px-1.5 rounded bg-dark/10 hover:bg-dark/15 cursor-pointer"
+              className="flex items-center gap-2 p-2.5 md:px-1.5 rounded bg-dark/10 hover:bg-dark/15 cursor-pointer"
             >
-              <div className="w-8 h-8 bg-dark/15 rounded-full flex items-center justify-center">
-                <FiUser className="h-4 w-4" />
-              </div>
+              <FiUser className="h-4.5 w-4.5" />
               <span className="hidden sm:flex items-center text-sm font-medium text-gray-700 capitalize">
                 {user.username || 'Admin'}
                 <LuChevronDown className='text-sm mt-0.5' />
