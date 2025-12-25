@@ -4,7 +4,7 @@ import React from 'react';
 const About = () => {
   return (
     <section className="container mx-auto px-4 py-12">
-      <h2 className="text-4xl font-bold mb-6"> About UrbanScope Realty </h2>
+      <h2 className="text-4xl font-bold mb-6"> About UrbanScope </h2>
       <p className="text-lg text-gray-700 leading-relaxed">
         We are dedicated to helping you find your perfect home with over 1,000 apartments 
         available across the city. Our experienced agents are committed to providing 
@@ -18,13 +18,13 @@ const About = () => {
           <h6 className='text-sm'> By the Numbers </h6>
           {/* <h2 className="text-3xl md:text-4xl font-bold mt-4"> Fueling Urban <br className='hidden md:flex' /> Growth </h2> */}
           <p className="text-gray-700 max-w-lg my-4">
-            <span className='text-4xl text-dark font-bold'> Fueling Urban Growth </span>
+            <span className='text-2xl md:text-3xl text-dark font-bold'> Fueling Urban Growth </span>
             and smart living, using deals run through the platform. UrbanScope Realty connects thousands of home seekers with properties that match their lifestyle and goals. Our deep market insight allows us to identify housing gaps and deliver innovative solutions that bridge them.
           </p>
-          <div className='w-1/2 h-24 bg-dark rounded flex '></div>
+          <div className='w-full md:w-1/2 h-32 md:h-24 bg-dark rounded flex '></div>
         </div>
 
-        <div className="w-3/4">
+        <div className="w-full md:w-3/4">
           <div>
             <h3 className="text-8xl font-extrabold text-dark leading-[0.8]"> ₦1.2B+ </h3>
             <p className="text-sm text-gray-600 mt-2"> Property Value Listed </p>

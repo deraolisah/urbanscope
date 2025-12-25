@@ -11,8 +11,8 @@ const Articles = () => {
 
       <div className='grid grid-cols-1 md:grid-cols-4 gap-4'>
         <Link to={""} className='flex md:flex-col w-full gap-2 pb-4 border-b border-dark/20 hover:border-dark/50 group'>
-          <div className='w-36 md:w-full h-full md:h-38 bg-dark rounded-sm overflow-hidden shadow'>
-            <img src={Article1} className='w-full h-full object-center object-cover transition-all duration-300 scale-[1.02] group-hover:scale-[1]' />
+          <div className='w-34 md:w-full h-full md:h-38 bg-dark rounded-sm overflow-hidden shadow'>
+            <img src={Article1} className='w-full h-full object-left object-cover transition-all duration-300 scale-[1.02] group-hover:scale-[1]' />
           </div>
           <div className='w-full flex flex-col gap-1 overflow-hidden'>
             <span className='w-fit px-2 p-1 rounded-xs shadow text-[10px] bg-gray-200'> Working at UrbanScope </span>
@@ -22,7 +22,7 @@ const Articles = () => {
         </Link>
 
         <div className='flex md:flex-col w-full gap-2 pb-4 border-b border-dark/20 hover:border-dark/50'>
-          <div className='w-36 md:w-full h-full md:h-38 bg-dark rounded-sm'></div>
+          <div className='w-34 md:w-full h-full md:h-38 bg-dark rounded-sm'></div>
           <div className='w-full flex flex-col gap-1 overflow-hidden'>
             <span className='w-fit px-2 p-1 rounded-xs text-[10px] bg-gray-200'> Case Studies </span>
             <h5 className='text-nowrap overflow-hidden truncate'> Strategic PR for VCs: Breaking Through the Noise </h5>
@@ -31,7 +31,7 @@ const Articles = () => {
         </div>
 
         <div className='flex md:flex-col w-full gap-2 pb-4 border-b border-dark/20 hover:border-dark/50'>
-          <div className='w-36 md:w-full h-full md:h-38 bg-dark rounded-sm'></div>
+          <div className='w-34 md:w-full h-full md:h-38 bg-dark rounded-sm'></div>
           <div className='w-full flex flex-col gap-1 overflow-hidden'>
             <span className='w-fit px-2 p-1 rounded-xs text-[10px] bg-gray-200'> Case Studies </span>
             <h5 className='text-nowrap overflow-hidden truncate'> From First Draft to First Close: Navigating Fund Formation with Orrick </h5>
@@ -40,8 +40,8 @@ const Articles = () => {
         </div>
 
         <Link to={""} className='flex md:flex-col w-full gap-2 pb-4 border-b border-dark/20 hover:border-dark/50 group'>
-          <div className='w-36 md:w-full h-full md:h-38 bg-dark rounded-sm overflow-hidden shadow'>
-            <img src={Article4} className='w-full h-full object-center object-cover transition-all duration-300 scale-[1.02] group-hover:scale-[1]' />
+          <div className='w-34 md:w-full h-full md:h-38 bg-dark rounded-sm overflow-hidden shadow'>
+            <img src={Article4} className='w-full h-full object-left object-cover transition-all duration-300 scale-[1.02] group-hover:scale-[1]' />
           </div>
           <div className='w-full flex flex-col gap-1 overflow-hidden'>
             <span className='w-fit px-2 p-1 rounded-xs shadow text-[10px] bg-gray-200'> Case Studies </span>

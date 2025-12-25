@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   FiUsers,
@@ -19,8 +18,8 @@ import { useContext } from 'react';
 
 const DashboardSidebar = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
-  const { user, logout } = useContext(AuthContext);
-  const { properties, loading } = useContext(PropertyContext);
+  const { logout } = useContext(AuthContext);
+  const { properties } = useContext(PropertyContext);
 
 
   const handleLogout = async () => {

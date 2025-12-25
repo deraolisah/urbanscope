@@ -6,7 +6,7 @@ import { MdSkipNext, MdSkipPrevious } from "react-icons/md";
 const FeaturedProperties = () => {
   // const featuredSectionRef = useRef(null);
   const scrollContainerRef = useRef(null);
-  const { featuredProperties, properties, loading, fetchFeaturedProperties } = useContext(PropertyContext);
+  const { featuredProperties, loading, fetchFeaturedProperties } = useContext(PropertyContext);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showControls, setShowControls] = useState(false);
 
@@ -87,14 +87,14 @@ const FeaturedProperties = () => {
       </h2>
       
       {/* Properties Container with Navigation */}
-      <div className="relative">
+      <div className="relative mt-2">
         {/* Properties Grid/Scroll */}
         <div 
           ref={scrollContainerRef}
           className='w-full h-full flex gap-4 overflow-x-scroll lg:grid lg:grid-cols-4 scrollbar-hidden snap-x snap-mandatory'
           onScroll={handleScroll}
         >
-          {displayProperties.map((property, index) => (
+          {displayProperties.map((property) => (
             <div key={property._id} className='flex-shrink-1 snap-start'>
               <PropertyPreview property={property} />
               {/* <hr className='mt-8 border-dark/10' /> */}
@@ -102,17 +102,17 @@ const FeaturedProperties = () => {
           ))}
         </div>
 
-        <div className='flex items-center justify-between mt-8'>
+        <div className='flex items-center justify-between mt-8.5'>
           {/* Dot Pagination */}
           {showControls && (
-            <div className='flex ml-auto items-center justify-start gap-3'>
+            <div className='flex ml-auto items-center justify-start gap-2.5'>
               {displayProperties.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => scrollToIndex(index)}
-                  className={`w-2.5 h-2.5 rounded-full cursor-pointer transition-all duration-300 ${
+                  className={`w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ${
                     currentIndex === index 
-                      ? 'bg-dark scale-125' 
+                      ? 'bg-dark w-4 scale-120' 
                       : 'bg-dark/30 hover:bg-dark/60'
                   }`}
                   aria-label={`Go to property ${index + 1}`}
@@ -126,7 +126,7 @@ const FeaturedProperties = () => {
             <div className='w-full flex h-full items-center justify-end gap-2'>
               <button 
                 onClick={prevSlide}
-                className="bg-white/20 hover:bg-white text-dark rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center shadow-lg border border-dark/10 transition-all duration-200 hover:scale-110"
+                className="bg-white/20 hover:bg-dark/10 cursor-pointer text-dark rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center shadow-lg border border-dark/10 transition-all duration-200 hover:scale-110"
                 aria-label="Previous properties"
               >
                 {/* &#10094; */}
@@ -134,7 +134,7 @@ const FeaturedProperties = () => {
               </button>
               <button 
                 onClick={nextSlide}
-                className="bg-white/20 hover:bg-white text-dark rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center shadow-lg border border-dark/10 transition-all duration-200 hover:scale-110"
+                className="bg-white/20 hover:bg-dark/10 cursor-pointer text-dark rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center shadow-lg border border-dark/10 transition-all duration-200 hover:scale-110"
                 aria-label="Next properties"
               >
                 {/* &#10095; */}
