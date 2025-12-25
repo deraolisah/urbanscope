@@ -170,7 +170,7 @@ const AdminDashboard = () => {
             <h3 className="text-xl font-semibold"> User Management </h3>
             <span className="text-sm text-gray-500"> ({users.length}) users </span>
           </div>
-          <div className="divide-y divide-dark/40 max-h-96 overflow-y-auto">
+          <div className="divide-y divide-dark/40 max-h-80 overflow-y-auto">
             {users.map((user) => (
               <div key={user._id} className="p-4 flex items-center justify-between">
                 <div>
