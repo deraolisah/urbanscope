@@ -16,13 +16,13 @@ const AdminDashboard = () => {
   });
 
   const { user, logout } = useContext(AuthContext);
-  const { properties, loading, setLoading, getFormattedPrice } = useContext(PropertyContext);
+  const { properties, loading, setLoading } = useContext(PropertyContext);
 
   const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     fetchDashboardData();
-  }, []);
+  });
 
   // Fetch Dashboard Data
   const fetchDashboardData = async () => {

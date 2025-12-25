@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
+import { PiEyeClosed, PiEye } from "react-icons/pi";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -11,9 +12,13 @@ const Login = () => {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  
+  const [ showPassword, setShowPassword ] = useState(false);
+  
+  
   const navigate = useNavigate();
+  const { login, register } = useContext(AuthContext);
 
-  const { login, register, user } = useContext(AuthContext);
 
   const handleChange = (e) => {
     setFormData({
@@ -114,15 +119,25 @@ const Login = () => {
             className="border border-gray-300 px-4 py-2 w-full input-field"
             required
           />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            className="border border-gray-300 px-4 py-2 w-full input-field"
-            required
-          />
+          <div className='relative'>
+            <input
+              type={!showPassword ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              className="border border-gray-300 px-4 py-2 w-full input-field"
+              required
+            />
+            <button type='button' onClick={() => setShowPassword(!showPassword)} className='absolute top-1/2 -translate-y-1/2 right-2.5 z-2 cursor-pointer text-dark/80 bg-dark/10 w-7 h-7 rounded-full flex items-center justify-center'>
+              {showPassword ? (
+                <PiEyeClosed className='' />
+              ) : (
+                <PiEye className='' />
+              )}
+            </button>
+          </div>
+          
           <small className="text-left w-full">
             <Link to="/forgot-password" className="text-dark/80 underline">
               forgot your password?

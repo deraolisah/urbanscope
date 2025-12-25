@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { AuthContext } from '../../contexts/AuthContext';
+// import { AuthContext } from '../../contexts/AuthContext';
 
 const AddProperty = () => {
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -180,6 +180,8 @@ const AddProperty = () => {
       setTimeout(() => {
         navigate('/admin');
       }, 2000);
+
+      return response;
     } catch (error) {
       console.error('Error adding property:', error);
       setError(error.response?.data?.message || 'Failed to add property');
@@ -191,7 +193,7 @@ const AddProperty = () => {
   return (
     <section className="pb-8">
       <div className="">
-        <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
+        <div className="bg-white border border-dark/10 rounded-lg shadow-md p-4 md:p-6">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-800"> Add New Property </h1>
             <button onClick={() => navigate('/admin')} className="w-fit btn-tertiary"> Back to Dashboard </button>

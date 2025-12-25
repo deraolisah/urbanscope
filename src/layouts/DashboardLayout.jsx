@@ -5,7 +5,7 @@ import DashboardSidebar from '../components/dashboard/DashboardSidebar';
 import { AuthContext } from '../contexts/AuthContext';
 
 const DashboardLayout = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -23,7 +23,7 @@ const DashboardLayout = () => {
         <DashboardSidebar isOpen={sidebarOpen} onClose={closeSidebar} />
       )}
       <main className={`${user.role === "admin" && "lg:ml-64"} min-h-screen`}>
-        <div className="p-4">
+        <div className="p-4 md:p-6">
           <Outlet />
         </div>
       </main>

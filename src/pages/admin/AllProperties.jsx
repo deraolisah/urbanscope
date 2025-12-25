@@ -1,17 +1,18 @@
 import React, { useContext } from 'react';
 import { MdPersonAdd, MdDelete, MdEdit, MdAdd } from 'react-icons/md';
 import { PropertyContext } from "../../contexts/PropertyContext";
-import { AuthContext } from '../../contexts/AuthContext';
+// import { AuthContext } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
-
+import axios from "axios";
 
 
 const AllProperties = () => {
   const navigate = useNavigate();
 
-  const { user, logout } = useContext(AuthContext);
-  const { properties, loading, setLoading, getFormattedPrice } = useContext(PropertyContext);
+  // const { user, logout } = useContext(AuthContext);
+  const { properties, fetchDashboardData, getFormattedPrice } = useContext(PropertyContext);
 
+  const API_URL = import.meta.env.VITE_API_URL;
 
    // Delete A Property
   const handleDeleteProperty = async (propertyId) => {

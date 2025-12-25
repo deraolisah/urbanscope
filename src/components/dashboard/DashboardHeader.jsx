@@ -7,7 +7,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 const DashboardHeader = ({ isOpen, onMenuClick }) => {
   const [showUserMenu, setShowUserMenu] = useState(false);
-  const [showMobileSearch, setShowMobileSearch] = useState(false);
+  // const [showMobileSearch, setShowMobileSearch] = useState(false);
   const navigate = useNavigate();
 
   // Get admin data from localStorage
@@ -25,8 +25,8 @@ const DashboardHeader = ({ isOpen, onMenuClick }) => {
   };
 
   return (
-    <header className="w-full h-16 border-b border-dark/10 bg-white sticky top-0 z-50">
-      <div className="container h-full flex items-center justify-between relative bg-light z-2">
+    <header className="w-full h-16 border-b border-dark/10 bg-white relative top-0 z-50">
+      <div className="px-4 md:px-6 h-full flex items-center justify-between bg-light z-2">
         {/* Left side - Menu button and logo */}
         <div className="flex items-center space-x-2 sm:space-x-4">
           {user.role === "admin" && (
@@ -40,25 +40,25 @@ const DashboardHeader = ({ isOpen, onMenuClick }) => {
 
           {/* Logo for mobile */}
           <div className="flex flex-1">
-            <Link to="/" onClick={() => { window.scrollTo(0,0); closeMenu(); }} className="text-base font-extrabold uppercase flex items-center gap-2"> 
+            <Link to="/" onClick={() => { window.scrollTo(0,0); }} className="text-base font-extrabold uppercase flex items-center gap-2"> 
               <img src={logo} alt='UrbanScope Logo' className='h-5 md:h-6' />
             </Link>
           </div>
         </div>
 
         {/* Right side - Notifications and user menu */}
-        <div className="flex items-center space-x-2 sm:space-x-4">
-          <button className="p-2.5 rounded bg-dark/5 text-gray-600 hover:bg-gray-100 relative sm:block">
+        <div className="flex items-center space-x-2">
+          <button className="p-2.5 rounded bg-dark/10 text-gray-600 hover:bg-gray-100 relative sm:block cursor-pointer">
             <FiBell className="h-5 w-5" />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full animate-ping"></span>
           </button>
 
-          <div className="relative">
+          <div className="">
             <button
               onClick={() => setShowUserMenu(!showUserMenu)}
-              className="flex items-center gap-2 p-1 px-1.5 rounded bg-dark/5 hover:bg-dark/5 cursor-pointer"
+              className="flex items-center gap-2 p-1 px-1.5 rounded bg-dark/10 hover:bg-dark/15 cursor-pointer"
             >
-              <div className="w-8 h-8 bg-dark/10 rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-dark/15 rounded-full flex items-center justify-center">
                 <FiUser className="h-4 w-4" />
               </div>
               <span className="hidden sm:flex items-center text-sm font-medium text-gray-700 capitalize">
@@ -68,7 +68,7 @@ const DashboardHeader = ({ isOpen, onMenuClick }) => {
             </button>
 
             {showUserMenu && (
-              <div className="absolute right-0 mt-2 min-w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
+              <div className="absolute right-4 mt-2 min-w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
                 <div className="px-4 py-2 border-b border-gray-100">
                   <p className="text-sm font-medium text-gray-700 capitalize">
                     {user.username || 'Admin User'}
