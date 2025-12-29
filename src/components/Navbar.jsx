@@ -25,9 +25,6 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await logout();
-      if (setFavorites) {
-        setFavorites([]);
-      }
       setIsMenuOpen(false);
       navigate('/');
     } catch (error) {
@@ -42,15 +39,15 @@ const Navbar = () => {
   return (
     <nav ref={navRef} className="w-full h-16 border-b border-dark/10 bg-white sticky top-0 z-50">
       <div className='container h-full flex items-center justify-between relative bg-light z-2'>
-        <Link to="/" onClick={() => { window.scrollTo(0,0); closeMenu(); windows.reload(); }} className="text-base font-extrabold uppercase flex items-center gap-2"> 
+        <Link to="/" onClick={() => { window.scrollTo(0,0); closeMenu(); }} className="text-base font-extrabold uppercase flex items-center gap-2"> 
           <img src={logo} alt='UrbanScope Logo' className='h-5 md:h-6' />
         </Link>
 
         <ul className='hidden md:flex items-center space-x-8'>
-          <Link to="/" onClick={() => { window.scrollTo(0,0); windows.reload(); }} className={`relative text-dark/80 hover:text-dark transition-colors after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-dark after:transition-all after:duration-300 hover:after:w-full ${ location.pathname === '/' ? 'text-dark font-semibold after:w-full' : '' }`}>
+          <Link to="/" onClick={() => { window.scrollTo(0,0); }} className={`relative text-dark/80 hover:text-dark transition-colors after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-dark after:transition-all after:duration-300 hover:after:w-full ${ location.pathname === '/' ? 'text-dark font-semibold after:w-full' : '' }`}>
             Home
           </Link>
-          <Link to="/explore" onClick={() => { window.scrollTo(0,0); windows.reload(); }} className={`relative text-dark/80 hover:text-dark transition-colors after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-dark after:transition-all after:duration-300 hover:after:w-full ${location.pathname === '/explore' ? 'text-dark font-semibold after:w-full' : ''}`}> Explore </Link>
+          <Link to="/explore" onClick={() => { window.scrollTo(0,0); }} className={`relative text-dark/80 hover:text-dark transition-colors after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-dark after:transition-all after:duration-300 hover:after:w-full ${location.pathname === '/explore' ? 'text-dark font-semibold after:w-full' : ''}`}> Explore </Link>
           <Link to="/about" className={`relative text-dark/80 hover:text-dark transition-colors after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-dark after:transition-all after:duration-300 hover:after:w-full ${location.pathname === '/about' ? 'text-dark font-semibold after:w-full' : ''}`}> About </Link>
           <Link to="/contact" className={`relative text-dark/80 hover:text-dark transition-colors after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-dark after:transition-all after:duration-300 hover:after:w-full ${location.pathname === '/contact' ? 'text-dark font-semibold after:w-full' : ''}`}> Contact </Link>
           <Link to="/services" className={`relative text-dark/80 hover:text-dark transition-colors after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-dark after:transition-all after:duration-300 hover:after:w-full ${location.pathname === '/services' ? 'text-dark font-semibold after:w-full' : ''}`}> Services </Link>
