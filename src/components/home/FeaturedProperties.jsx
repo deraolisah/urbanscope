@@ -65,26 +65,26 @@ const FeaturedProperties = () => {
     }
   };
 
-
-  if (loading) return <div className="container text-center py-8"> Loading Featured Properties... </div>;
-
-  if (!Array.isArray(featuredProperties) || featuredProperties.length === 0) {
-    return (
-      <div className="container py-8 text-center"> 
-        No featured properties available.
-        <button onClick={() => { fetchFeaturedProperties(); } } className='btn w-fit mx-auto mt-4'> Refresh </button>
-      </div>
-    );
-  }
-
   const displayProperties = featuredProperties.slice(0, 4);
 
+  
   return (
     <section className="container py-10 transition-colors duration-50 relative">
       {/* Featured Properties Section */}
       <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-center leading-tight uppercase mb-4 md:mb-8">
         Featured Properties
       </h2>
+
+      {loading  && (
+        <div className="container text-center py-8"> Loading Featured Properties... </div>
+      )}
+
+      {!Array.isArray(featuredProperties) || featuredProperties.length === 0 && (
+        <div className="container py-8 text-center"> 
+          No featured properties available.
+          <button onClick={() => { fetchFeaturedProperties(); } } className='btn w-fit mx-auto mt-4'> Refresh </button>
+        </div>
+      )}
       
       {/* Properties Container with Navigation */}
       <div className="relative mt-2">

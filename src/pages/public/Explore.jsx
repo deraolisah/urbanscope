@@ -529,7 +529,7 @@ const Explore = () => {
               {searchQuery ? 'Try different keywords or adjust your filters' : 'Adjust your filters to see more results.'}
             </p>
             <div className='flex items-center justify-center space-x-2 mt-4'>
-              <button onClick={resetFilters} className="btn w-fit">
+              <button onClick={resetFilters} className="btn btn-tertiary w-fit">
                 {searchQuery ? 'Clear Search & Filters' : 'Reset All Filters'}
               </button>
               {!searchQuery && (
@@ -540,6 +540,7 @@ const Explore = () => {
             </div>
           </div>
         )}
+
 
         {/* Pagination - UPDATED */}
         {/* {filteredProperties.length > itemsPerPage && ( */}
