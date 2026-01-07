@@ -551,7 +551,7 @@ const PropertyDetail = () => {
                     <p> <strong>Social: </strong> {property?.social} </p>
                   </div>
                   <hr className='w-full my-2 border-dark/20' />
-                  <p className='text-sm'> Trusted by 100's of satisfied clients. </p>
+                  <p className='text-sm'> Trusted by multiple satisfied clients. </p>
                 </div>
               </div>
             )}

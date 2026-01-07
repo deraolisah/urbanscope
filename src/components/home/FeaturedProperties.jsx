@@ -143,6 +143,7 @@ const FeaturedProperties = () => {
             </div>
           )}
         </div>
+          <button className='btn w-fit mx-auto hidden lg:flex'> View All Properties </button>
       </div>
     </section>
   );

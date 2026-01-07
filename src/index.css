@@ -95,3 +95,25 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
 }
+
+
+
+.logo-ticker-img {
+  height: 3rem;
+  width: auto;
+  margin: 0 2rem;
+  object-fit: contain;
+}
+
+@keyframes logo-ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-logo-ticker {
+  animation: logo-ticker 30s linear infinite;
+}
