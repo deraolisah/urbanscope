@@ -68,8 +68,9 @@ const Hero = () => {
           <p ref={paragraphRef} className='text-md md:pr-[20%]'>
             UrbanScope provides investors and innovators with the opportunity to grow... You are guaranteed to find a property that suits you.
           </p>
-          <Link ref={btnRef} to="/explore" className='btn'>
+          <Link ref={btnRef} to="/explore" className='btn hover:gap-4 transition-all duration-300'>
             Explore Properties
+            <HiMiniArrowRight className='' />
           </Link>
           {/* <Link ref={formRef} to="/explore" className='flex gap-0'>
             <input
@@ -80,7 +81,7 @@ const Hero = () => {
             <button className='btn w-fit rounded-l-none rounded-r-lg'>
               <HiMiniArrowRight />
             </button>
-          </Link> */}
+          </Link>  */}
         </div>
       </div>
 

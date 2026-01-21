@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useRef } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FiCheck, FiMail, FiPlay } from 'react-icons/fi';
 import { AiOutlinePicture } from "react-icons/ai";
@@ -107,28 +107,28 @@ const PropertyDetail = () => {
   };
 
   // Function to generate video thumbnail URL
-  const generateVideoThumbnail = (videoUrl) => {
-    if (!videoUrl) return '';
+  // const generateVideoThumbnail = (videoUrl) => {
+  //   if (!videoUrl) return '';
 
-    // YouTube thumbnails
-    if (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
-      const videoId = getYouTubeVideoId(videoUrl);
-      if (videoId) {
-        return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-      }
-    }
+  //   // YouTube thumbnails
+  //   if (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
+  //     const videoId = getYouTubeVideoId(videoUrl);
+  //     if (videoId) {
+  //       return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  //     }
+  //   }
     
-    // Vimeo thumbnails
-    if (videoUrl.includes('vimeo.com')) {
-      const videoId = getVimeoVideoId(videoUrl);
-      if (videoId) {
-        return `https://vumbnail.com/${videoId}.jpg`;
-      }
-    }
+  //   // Vimeo thumbnails
+  //   if (videoUrl.includes('vimeo.com')) {
+  //     const videoId = getVimeoVideoId(videoUrl);
+  //     if (videoId) {
+  //       return `https://vumbnail.com/${videoId}.jpg`;
+  //     }
+  //   }
     
-    // For direct video files or unsupported platforms, return the first property image
-    return property?.images[0] || '';
-  };
+  //   // For direct video files or unsupported platforms, return the first property image
+  //   return property?.images[0] || '';
+  // };
 
   // Function to check if thumbnail exists
   const checkThumbnailExists = (url) => {
